@@ -8,3 +8,5 @@ python-dotenv
 rapidfuzz
 pydantic
 pytest
+setuptools
+# -e .
