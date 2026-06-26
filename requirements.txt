@@ -9,4 +9,8 @@ rapidfuzz
 pydantic
 pytest
 setuptools
+pyodbc
+pytorch
+transformers
+accelerate
 # -e .
