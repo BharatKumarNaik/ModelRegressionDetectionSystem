@@ -10,7 +10,7 @@ pydantic
 pytest
 setuptools
 pyodbc
-pytorch
+torch
 transformers
 accelerate
 langchain_community
