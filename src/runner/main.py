@@ -25,10 +25,7 @@ def run_query(question: str) -> str:
 
 
 if __name__ == "__main__":
-    user_query = "Which customers frequently place large orders but receive partial deliveries?"
+    user_query = input("Enter your query:")
     answer = run_query(user_query)
     print("\n--- Final Agent Answer ---")
-    print(answer)
-
-# Server=localhost;Database=master;Trusted_Connection=True;
-# sqlcmd -S localhost -C
+    print(answer['final_answer'])

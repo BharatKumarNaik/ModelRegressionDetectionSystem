@@ -7,7 +7,7 @@
     "business_domain": "Sales",
     "question": "What is the total sales amount recorded in customer transactions?",
     "baseline": {
-      "model": "gpt-4o",
+      "model": "gemini-2.5-flash",
       "prompt_version": "v1.0",
       "sql": "SELECT SUM(TransactionAmount) AS TotalSales FROM Sales.CustomerTransactions;"
     },
@@ -27,7 +27,7 @@
     "business_domain": "Sales",
     "question": "Which customer category generated the highest sales revenue?",
     "baseline": {
-      "model": "gpt-4o",
+      "model": "gemini-2.5-flash",
       "prompt_version": "v1.0",
       "sql": "SELECT cc.CustomerCategoryName, SUM(ct.TransactionAmount) AS Revenue FROM Sales.CustomerTransactions ct JOIN Sales.Customers c ON ct.CustomerID = c.CustomerID JOIN Sales.CustomerCategories cc ON c.CustomerCategoryID = cc.CustomerCategoryID GROUP BY cc.CustomerCategoryName ORDER BY Revenue DESC;"
     },
@@ -69,7 +69,7 @@
     "business_domain": "Sales",
     "question": "Show the monthly sales trend across all available years.",
     "baseline": {
-      "model": "gpt-4o",
+      "model": "gemini-2.5-flash",
       "prompt_version": "v1.0",
       "sql": "SELECT YEAR(TransactionDate) AS SalesYear, MONTH(TransactionDate) AS SalesMonth, SUM(TransactionAmount) AS Revenue FROM Sales.CustomerTransactions GROUP BY YEAR(TransactionDate), MONTH(TransactionDate) ORDER BY SalesYear, SalesMonth;"
     },
@@ -297,7 +297,7 @@
     "business_domain": "Customer",
     "question": "Who are the top five customers by total transaction amount?",
     "baseline": {
-      "model": "gpt-4o",
+      "model": "gemini-2.5-flash",
       "prompt_version": "v1.0",
       "sql": "SELECT TOP 5 c.CustomerName, SUM(ct.TransactionAmount) AS Revenue FROM Sales.CustomerTransactions ct JOIN Sales.Customers c ON ct.CustomerID = c.CustomerID GROUP BY c.CustomerName ORDER BY Revenue DESC;"
     },
@@ -339,7 +339,7 @@
     "business_domain": "Sales",
     "question": "Compare the average transaction amount across customer categories.",
     "baseline": {
-      "model": "gpt-4o",
+      "model": "gemini-2.5-flash",
       "prompt_version": "v1.0",
       "sql": "SELECT cc.CustomerCategoryName, AVG(ct.TransactionAmount) AS AverageTransaction FROM Sales.CustomerTransactions ct JOIN Sales.Customers c ON ct.CustomerID = c.CustomerID JOIN Sales.CustomerCategories cc ON c.CustomerCategoryID = cc.CustomerCategoryID GROUP BY cc.CustomerCategoryName;"
     },
@@ -381,7 +381,7 @@
     "business_domain": "Warehouse",
     "question": "Which stock items are currently below their reorder level?",
     "baseline": {
-      "model": "gpt-4o",
+      "model": "gemini-2.5-flash",
       "prompt_version": "v1.0",
       "sql": "SELECT si.StockItemName, sh.QuantityOnHand, sh.ReorderLevel FROM Warehouse.StockItemHoldings sh JOIN Warehouse.StockItems si ON sh.StockItemID = si.StockItemID WHERE sh.QuantityOnHand < sh.ReorderLevel;"
     },
@@ -414,7 +414,7 @@
     "business_domain": "Purchasing",
     "question": "Which supplier has the highest procurement spending?",
     "baseline": {
-      "model": "gpt-4o",
+      "model": "gemini-2.5-flash",
       "prompt_version": "v1.0",
       "sql": "SELECT s.SupplierName, SUM(st.TransactionAmount) AS TotalSpend FROM Purchasing.SupplierTransactions st JOIN Purchasing.Suppliers s ON st.SupplierID = s.SupplierID GROUP BY s.SupplierName ORDER BY TotalSpend DESC;"
     },
@@ -464,7 +464,7 @@
     "business_domain": "Sales",
     "question": "Identify the top three customers by revenue within each buying group.",
     "baseline": {
-      "model": "gpt-4o",
+      "model": "gemini-2.5-flash",
       "prompt_version": "v1.0",
       "sql": "WITH CustomerRevenue AS (SELECT bg.BuyingGroupName, c.CustomerName, SUM(ct.TransactionAmount) AS Revenue FROM Sales.CustomerTransactions ct JOIN Sales.Customers c ON ct.CustomerID = c.CustomerID JOIN Sales.BuyingGroups bg ON c.BuyingGroupID = bg.BuyingGroupID GROUP BY bg.BuyingGroupName, c.CustomerName) SELECT BuyingGroupName, CustomerName, Revenue FROM (SELECT *, ROW_NUMBER() OVER(PARTITION BY BuyingGroupName ORDER BY Revenue DESC) AS rn FROM CustomerRevenue) t WHERE rn <= 3;"
     },

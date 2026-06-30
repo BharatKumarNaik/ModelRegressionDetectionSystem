@@ -15,5 +15,5 @@ sql_prompt = ChatPromptTemplate.from_messages([
 
 summary_prompt = ChatPromptTemplate.from_messages([
     ("system","You are a precise data assistant. Answer the user's question directly and completely using only the provided database context records."),
-    ("human","Database Context:\n{sql_result}\n\nQuestion: {question}")
+    ("human","Retrieved DAta:\n{sql_result}\n SQL Query used to retrieve the data: {sql_script}\nQuestion: {question}")
 ])

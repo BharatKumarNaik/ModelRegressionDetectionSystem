@@ -1,0 +1,32 @@
+[2026-06-30 20:40:31,257] 43 root INFO - Vector DB documents are ready
+[2026-06-30 20:40:31,258] 16 root INFO - build vector store
+[2026-06-30 20:40:34,145] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-embedding-2:batchEmbedContents "HTTP/1.1 200 OK"
+[2026-06-30 20:40:35,143] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-embedding-2:batchEmbedContents "HTTP/1.1 200 OK"
+[2026-06-30 20:40:35,158] 132 faiss.loader INFO - Loading faiss with AVX2 support.
+[2026-06-30 20:40:35,158] 137 faiss.loader INFO - Could not load library with AVX2 support due to:
+ModuleNotFoundError("No module named 'faiss.swigfaiss_avx2'")
+[2026-06-30 20:40:35,162] 156 faiss.loader INFO - Loading faiss.
+[2026-06-30 20:40:35,185] 158 faiss.loader INFO - Successfully loaded faiss.
+[2026-06-30 20:40:35,198] 22 root INFO - get schema retriever function
+[2026-06-30 20:40:35,199] 23 root INFO - Invoking agent chain for question: Which customers frequently place large orders but receive partial deliveries?
+[2026-06-30 20:40:35,717] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-embedding-2:batchEmbedContents "HTTP/1.1 200 OK"
+[2026-06-30 20:40:35,725] 27 root INFO - combine documents function
+[2026-06-30 20:40:35,729] 6510 google_genai.models INFO - AFC is enabled with max remote calls: 10.
+[2026-06-30 20:40:37,513] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+[2026-06-30 20:40:37,517] 24 root INFO - Generated SQL:
+SELECT
+  C.CustomerName
+FROM Sales.Customers AS C
+JOIN Sales.Orders AS O
+  ON C.CustomerID = O.CustomerID
+JOIN Sales.Invoices AS I
+  ON O.OrderID = I.OrderID
+WHERE
+  O.IsUndersupplyBackordered = 1
+GROUP BY
+  C.CustomerName
+HAVING
+  COUNT(DISTINCT O.OrderID) > 10;
+[2026-06-30 20:40:37,589] 26 root INFO - Query returned 660 rows
+[2026-06-30 20:40:37,592] 6510 google_genai.models INFO - AFC is enabled with max remote calls: 10.
+[2026-06-30 20:40:40,957] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
