@@ -2,22 +2,15 @@
 Entry point for the LLM-driven SQL agent. Wires together:
 schema extraction -> document building -> vector store -> agent chain.
 """
-from src.database.schema_extractor import get_database_schema, get_table_relationships
+
 from src.llm.chains import build_agent_chain
-from src.llm.schema_documents import build_schema_documents
-from src.llm.vector_store import build_vector_store, get_schema_retriever
 from src.utils.logger import logging
+from src.llm.IndexManager import get_vectordb_retriever
 
 
 
 def run_query(question: str) -> str:
-    database_schema = get_database_schema()
-    relationships = get_table_relationships()
-
-    documents = build_schema_documents(database_schema, relationships)
-    vector_db = build_vector_store(documents)
-    schema_retriever = get_schema_retriever(vector_db)
-
+    schema_retriever = get_vectordb_retriever()
     agent_chain = build_agent_chain(schema_retriever)
 
     logging.info("Invoking agent chain for question: %s", question)

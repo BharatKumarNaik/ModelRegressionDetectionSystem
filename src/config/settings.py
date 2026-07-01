@@ -40,3 +40,7 @@ EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "models/gemini-embedding-2")
 LLM_MODEL = os.getenv("LLM_MODEL", "gemini-2.5-flash")
 LLM_TEMPERATURE = float(os.getenv("LLM_TEMPERATURE", "0"))
 RETRIEVER_TOP_K = int(os.getenv("RETRIEVER_TOP_K", "5"))
+
+# Vector DB and Hash store location
+VECTOR_STORE_DIR = os.getenv("VECTOR_STORE_DIR", "artifacts/vector_store")
+SCHEMA_HASH_PATH = os.getenv("SCHEMA_HASH_PATH", "artifacts/vector_store/schema_hash.txt")
