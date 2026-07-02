@@ -1,9 +1,0 @@
-[2026-07-03 01:26:43,600] 76 root INFO - Executing Test ID:TC_001
-[2026-07-03 01:26:43,949] 78 root INFO - Schema unchanged (hash match) — reusing existing vector store
-[2026-07-03 01:26:43,949] 40 root INFO - Loading existing FAISS vector store from artifacts/vector_store
-[2026-07-03 01:26:44,774] 132 faiss.loader INFO - Loading faiss with AVX2 support.
-[2026-07-03 01:26:44,774] 137 faiss.loader INFO - Could not load library with AVX2 support due to:
-ModuleNotFoundError("No module named 'faiss.swigfaiss_avx2'")
-[2026-07-03 01:26:44,774] 156 faiss.loader INFO - Loading faiss.
-[2026-07-03 01:26:44,800] 158 faiss.loader INFO - Successfully loaded faiss.
-[2026-07-03 01:26:44,807] 60 root INFO - get schema retriever function
