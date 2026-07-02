@@ -44,3 +44,6 @@ RETRIEVER_TOP_K = int(os.getenv("RETRIEVER_TOP_K", "5"))
 # Vector DB and Hash store location
 VECTOR_STORE_DIR = os.getenv("VECTOR_STORE_DIR", "artifacts/vector_store")
 SCHEMA_HASH_PATH = os.getenv("SCHEMA_HASH_PATH", "artifacts/vector_store/schema_hash.txt")
+
+TEST_ARTIFACTS_DIR = "artifacts/test_dir"
+GOLDEN_DATASET_PATH = "datasets/golden_dataset.json"

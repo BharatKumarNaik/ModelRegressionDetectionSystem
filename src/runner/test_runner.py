@@ -34,29 +34,63 @@ schema extraction -> document building -> vector store -> agent chain.
 from src.llm.chains import build_agent_chain
 from src.utils.logger import logging
 from src.llm.IndexManager import get_vectordb_retriever
+from src.config.settings import TEST_ARTIFACTS_DIR,GOLDEN_DATASET_PATH
+from src.utils.logger import logging
+from src.utils.exception import MRDException
 
+from datetime import datetime
+import os,sys
+import json
+import time
 
 
 def run_query(question: str) -> str:
-    schema_retriever = get_vectordb_retriever()
-    agent_chain = build_agent_chain(schema_retriever)
+    try:
+        schema_retriever = get_vectordb_retriever()
+        agent_chain = build_agent_chain(schema_retriever)
+    
+        logging.info("Invoking agent chain for question: %s", question)
+        return agent_chain.invoke({"question": question})
+    except Exception as e:
+        raise MRDException(e,sys) from e
 
-    logging.info("Invoking agent chain for question: %s", question)
-    return agent_chain.invoke({"question": question})
+def write_json(path:str,content):
+    try:
+        os.makedirs(os.path.dirname(path),exist_ok=True)
+        with open(path,'w') as f:
+            f.write(content)
+        return True
+    except Exception as e:
+        raise MRDException(e,sys) from e
 
+def read_json(path:str):
+    try:
+        with open(path,'r') as f:
+            data = json.load(f)
+        return data
+    except Exception as e:
+        raise MRDException(e,sys) from e
 
 if __name__ == "__main__":
-    user_query = input("Enter your query:")
-    answer = run_query(user_query)
-    print("\n--- Final Agent Answer ---")
-    print(answer['final_answer'])
+    test_cases = read_json(GOLDEN_DATASET_PATH)
+    test_execution_results = []
+    for test in test_cases:
+        logging.info(f"Executing Test ID:{test['id']}")
+        user_query = test['question']
+        answer = run_query(user_query)
+        print("\n--- Final Agent Answer ---")
+        print(answer['final_answer'])
 
-    evaluation_input = {k: answer[k] for k in ['question', 'sql_script', 'sql_result','sql_llm','summary_llm' ,'final_answer']}
-    evaluation_input["sql_llm"].pop("answer", None)
-    evaluation_input["summary_llm"].pop("answer", None)
-    print(evaluation_input['sql_llm'])
-    print(evaluation_input['summary_llm'])
-
+        evaluation_input = {k: answer[k] for k in ['question', 'sql_script', 'sql_result','sql_llm','summary_llm' ,'final_answer']}
+        evaluation_input["sql_llm"].pop("answer", None)
+        evaluation_input["summary_llm"].pop("answer", None)
+        evaluation_input['id'] = test['id']
+        test_execution_results.append(evaluation_input)
+        logging.info(f"Test ID:{test['id']} execution completed")
+        time.sleep(20)
+    test_artifact_filename = f"{datetime.now().strftime('%m_%d_%Y_%H_%M_%S')}.json"
+    write_json(os.path.join(TEST_ARTIFACTS_DIR,test_artifact_filename),test_execution_results)
+    logging.info("All test executions completed successfully.")
 
 # Server=localhost;Database=master;Trusted_Connection=True;
 # sqlcmd -S localhost -C

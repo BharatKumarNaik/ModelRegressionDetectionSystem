@@ -1,0 +1,14 @@
+[2026-07-03 01:48:19,210] 78 root INFO - Executing Test ID:TC_001
+[2026-07-03 01:48:19,601] 78 root INFO - Schema unchanged (hash match) — reusing existing vector store
+[2026-07-03 01:48:19,601] 40 root INFO - Loading existing FAISS vector store from artifacts/vector_store
+[2026-07-03 01:48:20,443] 132 faiss.loader INFO - Loading faiss with AVX2 support.
+[2026-07-03 01:48:20,443] 137 faiss.loader INFO - Could not load library with AVX2 support due to:
+ModuleNotFoundError("No module named 'faiss.swigfaiss_avx2'")
+[2026-07-03 01:48:20,443] 156 faiss.loader INFO - Loading faiss.
+[2026-07-03 01:48:20,468] 158 faiss.loader INFO - Successfully loaded faiss.
+[2026-07-03 01:48:20,476] 60 root INFO - get schema retriever function
+[2026-07-03 01:48:20,477] 52 root INFO - Invoking agent chain for question: What is the total sales amount recorded in customer transactions?
+[2026-07-03 01:48:21,116] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-embedding-2:batchEmbedContents "HTTP/1.1 200 OK"
+[2026-07-03 01:48:21,200] 68 root INFO - combine documents function
+[2026-07-03 01:48:21,203] 6510 google_genai.models INFO - AFC is enabled with max remote calls: 10.
+[2026-07-03 01:48:21,565] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash:generateContent "HTTP/1.1 404 Not Found"

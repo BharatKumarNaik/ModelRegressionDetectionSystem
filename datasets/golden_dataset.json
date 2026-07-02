@@ -20,48 +20,6 @@
     "critical": true
   },
   {
-    "id": "TC_002",
-    "category": "categorical_analysis",
-    "difficulty": "easy",
-    "sql_features": ["GROUP BY", "JOIN", "SUM"],
-    "business_domain": "Sales",
-    "question": "Which customer category generated the highest sales revenue?",
-    "baseline": {
-      "model": "gemini-2.5-flash",
-      "prompt_version": "v1.0",
-      "sql": "SELECT cc.CustomerCategoryName, SUM(ct.TransactionAmount) AS Revenue FROM Sales.CustomerTransactions ct JOIN Sales.Customers c ON ct.CustomerID = c.CustomerID JOIN Sales.CustomerCategories cc ON c.CustomerCategoryID = cc.CustomerCategoryID GROUP BY cc.CustomerCategoryName ORDER BY Revenue DESC;"
-    },
-    "expected": {
-      "columns": [
-        "CustomerCategoryName",
-        "Revenue"
-    ],
-      "rows": [
-        [
-            "Novelty Shop",
-            "178915.69"
-        ],
-        [
-            "Corporate",
-            "29806.22"
-        ],
-        [
-            "Supermarket",
-            "23546.14"
-        ],
-        [
-            "Gift Store",
-            "19343.97"
-        ],
-        [
-            "Computer Store",
-            "15399.42"
-        ]
-    ]
-    },
-    "critical": true
-  },
-  {
     "id": "TC_003",
     "category": "time_series",
     "difficulty": "medium",

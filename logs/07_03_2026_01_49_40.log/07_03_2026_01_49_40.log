@@ -1,0 +1,42 @@
+[2026-07-03 01:49:41,274] 78 root INFO - Executing Test ID:TC_001
+[2026-07-03 01:49:41,736] 78 root INFO - Schema unchanged (hash match) — reusing existing vector store
+[2026-07-03 01:49:41,736] 40 root INFO - Loading existing FAISS vector store from artifacts/vector_store
+[2026-07-03 01:49:42,632] 132 faiss.loader INFO - Loading faiss with AVX2 support.
+[2026-07-03 01:49:42,632] 137 faiss.loader INFO - Could not load library with AVX2 support due to:
+ModuleNotFoundError("No module named 'faiss.swigfaiss_avx2'")
+[2026-07-03 01:49:42,632] 156 faiss.loader INFO - Loading faiss.
+[2026-07-03 01:49:42,659] 158 faiss.loader INFO - Successfully loaded faiss.
+[2026-07-03 01:49:42,666] 60 root INFO - get schema retriever function
+[2026-07-03 01:49:42,667] 52 root INFO - Invoking agent chain for question: What is the total sales amount recorded in customer transactions?
+[2026-07-03 01:49:43,455] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-embedding-2:batchEmbedContents "HTTP/1.1 200 OK"
+[2026-07-03 01:49:43,467] 68 root INFO - combine documents function
+[2026-07-03 01:49:43,471] 6510 google_genai.models INFO - AFC is enabled with max remote calls: 10.
+[2026-07-03 01:49:44,944] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+[2026-07-03 01:49:44,948] 47 root INFO - Generated SQL:
+SELECT SUM(TransactionAmount)
+FROM Sales.CustomerTransactions;
+[2026-07-03 01:49:44,992] 49 root INFO - Query returned 1 rows
+[2026-07-03 01:49:44,994] 6510 google_genai.models INFO - AFC is enabled with max remote calls: 10.
+[2026-07-03 01:49:46,365] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 503 Service Unavailable"
+[2026-07-03 01:49:46,365] 64 google_genai._api_client INFO - Retrying google.genai._api_client.BaseApiClient._request_once in 1.75 seconds as it raised ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}.
+[2026-07-03 01:49:48,993] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+[2026-07-03 01:49:48,998] 89 root INFO - Test ID:TC_001 execution completed
+[2026-07-03 01:50:09,000] 78 root INFO - Executing Test ID:TC_003
+[2026-07-03 01:50:09,319] 78 root INFO - Schema unchanged (hash match) — reusing existing vector store
+[2026-07-03 01:50:09,319] 40 root INFO - Loading existing FAISS vector store from artifacts/vector_store
+[2026-07-03 01:50:10,207] 60 root INFO - get schema retriever function
+[2026-07-03 01:50:10,208] 52 root INFO - Invoking agent chain for question: Show the monthly sales trend across all available years.
+[2026-07-03 01:50:10,926] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-embedding-2:batchEmbedContents "HTTP/1.1 200 OK"
+[2026-07-03 01:50:10,950] 68 root INFO - combine documents function
+[2026-07-03 01:50:10,954] 6510 google_genai.models INFO - AFC is enabled with max remote calls: 10.
+[2026-07-03 01:50:15,370] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+[2026-07-03 01:50:15,374] 47 root INFO - Generated SQL:
+SELECT
+    strftime('%Y-%m', TransactionDate) AS SaleMonth,
+    SUM(TransactionAmount) AS MonthlySales
+FROM
+    Sales.CustomerTransactions
+GROUP BY
+    strftime('%Y-%m', TransactionDate)
+ORDER BY
+    SaleMonth;

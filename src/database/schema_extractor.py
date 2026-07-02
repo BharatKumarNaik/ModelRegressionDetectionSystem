@@ -4,8 +4,9 @@ the raw material that llm/schema_documents.py turns into retrievable
 Document objects for the vector store.
 """
 from typing import Any, Dict
-
+from src.utils.exception import MRDException
 from src.database.connection import get_cursor
+import sys
 
 COLUMNS_QUERY = """
     SELECT
@@ -53,11 +54,14 @@ RELATIONSHIPS_QUERY = """
 
 
 def _run_query(query: str) -> Dict[str, Any]:
-    cursor = get_cursor()
-    cursor.execute(query)
-    rows = cursor.fetchall()
-    columns = [col[0] for col in cursor.description]
-    return {"columns": columns, "rows": [list(row) for row in rows]}
+    try:
+        cursor = get_cursor()
+        cursor.execute(query)
+        rows = cursor.fetchall()
+        columns = [col[0] for col in cursor.description]
+        return {"columns": columns, "rows": [list(row) for row in rows]}
+    except Exception as e:
+        raise MRDException(e,sys) from e
 
 
 def get_database_schema() -> Dict[str, Any]:

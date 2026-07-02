@@ -1,0 +1,41 @@
+[2026-07-03 01:19:16,345] 76 root INFO - Executing Test ID:TC_001
+[2026-07-03 01:19:17,072] 78 root INFO - Schema unchanged (hash match) — reusing existing vector store
+[2026-07-03 01:19:17,073] 40 root INFO - Loading existing FAISS vector store from artifacts/vector_store
+[2026-07-03 01:19:18,171] 132 faiss.loader INFO - Loading faiss with AVX2 support.
+[2026-07-03 01:19:18,171] 137 faiss.loader INFO - Could not load library with AVX2 support due to:
+ModuleNotFoundError("No module named 'faiss.swigfaiss_avx2'")
+[2026-07-03 01:19:18,171] 156 faiss.loader INFO - Loading faiss.
+[2026-07-03 01:19:18,354] 158 faiss.loader INFO - Successfully loaded faiss.
+[2026-07-03 01:19:18,382] 60 root INFO - get schema retriever function
+[2026-07-03 01:19:18,385] 50 root INFO - Invoking agent chain for question: What is the total sales amount recorded in customer transactions?
+[2026-07-03 01:19:19,012] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-embedding-2:batchEmbedContents "HTTP/1.1 200 OK"
+[2026-07-03 01:19:19,031] 68 root INFO - combine documents function
+[2026-07-03 01:19:19,039] 6510 google_genai.models INFO - AFC is enabled with max remote calls: 10.
+[2026-07-03 01:19:20,639] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+[2026-07-03 01:19:20,651] 47 root INFO - Generated SQL:
+SELECT SUM(TransactionAmount) FROM Sales.CustomerTransactions
+[2026-07-03 01:19:20,738] 49 root INFO - Query returned 1 rows
+[2026-07-03 01:19:20,743] 6510 google_genai.models INFO - AFC is enabled with max remote calls: 10.
+[2026-07-03 01:19:21,954] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+[2026-07-03 01:19:21,968] 87 root INFO - Test ID:TC_001 execution completed
+[2026-07-03 01:19:21,968] 76 root INFO - Executing Test ID:TC_002
+[2026-07-03 01:19:22,220] 78 root INFO - Schema unchanged (hash match) — reusing existing vector store
+[2026-07-03 01:19:22,220] 40 root INFO - Loading existing FAISS vector store from artifacts/vector_store
+[2026-07-03 01:19:23,196] 60 root INFO - get schema retriever function
+[2026-07-03 01:19:23,197] 50 root INFO - Invoking agent chain for question: Which customer category generated the highest sales revenue?
+[2026-07-03 01:19:23,760] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-embedding-2:batchEmbedContents "HTTP/1.1 200 OK"
+[2026-07-03 01:19:23,782] 68 root INFO - combine documents function
+[2026-07-03 01:19:23,785] 6510 google_genai.models INFO - AFC is enabled with max remote calls: 10.
+[2026-07-03 01:19:33,004] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+[2026-07-03 01:19:33,008] 47 root INFO - Generated SQL:
+SELECT TOP 1
+    scc.CustomerCategoryName
+FROM Sales.CustomerCategories AS scc
+JOIN Sales.Customers AS sc
+    ON scc.CustomerCategoryID = sc.CustomerCategoryID
+JOIN Sales.Orders AS so
+    ON sc.CustomerID = so.CustomerID
+GROUP BY
+    scc.CustomerCategoryName
+ORDER BY
+    SUM(so.OrderTotal) DESC
