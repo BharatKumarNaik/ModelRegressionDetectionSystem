@@ -54,14 +54,14 @@ def run_query(question: str) -> str:
     except Exception as e:
         raise MRDException(e,sys) from e
 
-def write_json(path:str,content):
+def write_json(path: str, content):
     try:
-        os.makedirs(os.path.dirname(path),exist_ok=True)
-        with open(path,'w') as f:
-            f.write(content)
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(content, f, indent=4, ensure_ascii=False)
         return True
     except Exception as e:
-        raise MRDException(e,sys) from e
+        raise MRDException(e, sys) from e
 
 def read_json(path:str):
     try:
