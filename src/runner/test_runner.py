@@ -55,13 +55,25 @@ def run_query(question: str) -> str:
         raise MRDException(e,sys) from e
 
 def write_json(path: str, content):
+    os.makedirs(os.path.dirname(path), exist_ok=True)
     try:
-        os.makedirs(os.path.dirname(path), exist_ok=True)
-        with open(path, "w", encoding="utf-8") as f:
-            json.dump(content, f, indent=4, ensure_ascii=False)
-        return True
-    except Exception as e:
-        raise MRDException(e, sys) from e
+        json_str = json.dumps(content, indent=4, ensure_ascii=False)
+    except TypeError:
+        # Fallback: coerce anything non-serializable to string instead of crashing
+        logging.warning("Standard json.dumps failed, retrying with default=str")
+        try:
+            json_str = json.dumps(content, indent=4, ensure_ascii=False, default=str)
+        except Exception as e:
+            # Last resort: dump as plain text so nothing is lost
+            txt_path = os.path.splitext(path)[0] + ".txt"
+            with open(txt_path, "w", encoding="utf-8") as f:
+                f.write(repr(content))
+            logging.error(f"JSON serialization failed entirely, wrote raw text to {txt_path}: {e}")
+            return False
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(json_str)
+    return True
+
 
 def read_json(path:str):
     try:
@@ -75,19 +87,24 @@ if __name__ == "__main__":
     test_cases = read_json(GOLDEN_DATASET_PATH)
     test_execution_results = []
     for test in test_cases:
-        logging.info(f"Executing Test ID:{test['id']}")
-        user_query = test['question']
-        answer = run_query(user_query)
-        print("\n--- Final Agent Answer ---")
-        print(answer['final_answer'])
+        try:
+            logging.info(f"Executing Test ID:{test['id']}")
+            user_query = test['question']
+            answer = run_query(user_query)
+            print("\n--- Final Agent Answer ---")
+            print(answer['final_answer'])
 
-        evaluation_input = {k: answer[k] for k in ['question', 'sql_script', 'sql_result','sql_llm','summary_llm' ,'final_answer']}
-        evaluation_input["sql_llm"].pop("answer", None)
-        evaluation_input["summary_llm"].pop("answer", None)
-        evaluation_input['id'] = test['id']
-        test_execution_results.append(evaluation_input)
-        logging.info(f"Test ID:{test['id']} execution completed")
+            evaluation_input = {k: answer[k] for k in ['question', 'sql_script', 'sql_result','sql_llm','summary_llm' ,'final_answer']}
+            evaluation_input["sql_llm"].pop("answer", None)
+            evaluation_input["summary_llm"].pop("answer", None)
+            evaluation_input['id'] = test['id']
+            test_execution_results.append(evaluation_input)
+            logging.info(f"Test ID:{test['id']} execution completed")
+        except Exception as e:
+            logging.exception(f"Test ID:{test['id']} failed: {e}")
+            continue
         time.sleep(20)
+        
     test_artifact_filename = f"{datetime.now().strftime('%m_%d_%Y_%H_%M_%S')}.json"
     write_json(os.path.join(TEST_ARTIFACTS_DIR,test_artifact_filename),test_execution_results)
     logging.info("All test executions completed successfully.")

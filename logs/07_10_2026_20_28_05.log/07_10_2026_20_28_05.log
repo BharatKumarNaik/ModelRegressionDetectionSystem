@@ -1,0 +1,170 @@
+[2026-07-10 20:28:14,435] 79 root INFO - Executing Test ID:TC_001
+[2026-07-10 20:28:15,198] 78 root INFO - Schema unchanged (hash match) — reusing existing vector store
+[2026-07-10 20:28:15,200] 40 root INFO - Loading existing FAISS vector store from artifacts/vector_store
+[2026-07-10 20:28:16,168] 132 faiss.loader INFO - Loading faiss with AVX2 support.
+[2026-07-10 20:28:16,168] 137 faiss.loader INFO - Could not load library with AVX2 support due to:
+ModuleNotFoundError("No module named 'faiss.swigfaiss_avx2'")
+[2026-07-10 20:28:16,168] 156 faiss.loader INFO - Loading faiss.
+[2026-07-10 20:28:16,610] 158 faiss.loader INFO - Successfully loaded faiss.
+[2026-07-10 20:28:16,696] 60 root INFO - get schema retriever function
+[2026-07-10 20:28:16,697] 52 root INFO - Invoking agent chain for question: What is the total sales amount recorded in customer transactions?
+[2026-07-10 20:28:17,519] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-embedding-2:batchEmbedContents "HTTP/1.1 200 OK"
+[2026-07-10 20:28:17,557] 68 root INFO - combine documents function
+[2026-07-10 20:28:17,591] 6510 google_genai.models INFO - AFC is enabled with max remote calls: 10.
+[2026-07-10 20:28:18,966] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+[2026-07-10 20:28:18,972] 47 root INFO - Generated SQL:
+SELECT SUM(TransactionAmount) FROM Sales.CustomerTransactions
+[2026-07-10 20:28:19,076] 49 root INFO - Query returned 1 rows
+[2026-07-10 20:28:19,079] 6510 google_genai.models INFO - AFC is enabled with max remote calls: 10.
+[2026-07-10 20:28:20,385] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+[2026-07-10 20:28:20,580] 90 root INFO - Test ID:TC_001 execution completed
+[2026-07-10 20:28:40,581] 79 root INFO - Executing Test ID:TC_003
+[2026-07-10 20:28:40,939] 78 root INFO - Schema unchanged (hash match) — reusing existing vector store
+[2026-07-10 20:28:40,939] 40 root INFO - Loading existing FAISS vector store from artifacts/vector_store
+[2026-07-10 20:28:41,759] 60 root INFO - get schema retriever function
+[2026-07-10 20:28:41,759] 52 root INFO - Invoking agent chain for question: Show the monthly sales trend across all available years.
+[2026-07-10 20:28:42,339] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-embedding-2:batchEmbedContents "HTTP/1.1 200 OK"
+[2026-07-10 20:28:42,358] 68 root INFO - combine documents function
+[2026-07-10 20:28:42,360] 6510 google_genai.models INFO - AFC is enabled with max remote calls: 10.
+[2026-07-10 20:28:44,208] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+[2026-07-10 20:28:44,212] 47 root INFO - Generated SQL:
+SELECT
+    YEAR(TransactionDate) AS SalesYear,
+    MONTH(TransactionDate) AS SalesMonth,
+    SUM(TransactionAmount) AS TotalSales
+FROM
+    Sales.CustomerTransactions
+GROUP BY
+    YEAR(TransactionDate),
+    MONTH(TransactionDate)
+ORDER BY
+    SalesYear,
+    SalesMonth;
+[2026-07-10 20:28:44,289] 49 root INFO - Query returned 41 rows
+[2026-07-10 20:28:44,292] 6510 google_genai.models INFO - AFC is enabled with max remote calls: 10.
+[2026-07-10 20:28:48,592] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+[2026-07-10 20:28:48,598] 90 root INFO - Test ID:TC_003 execution completed
+[2026-07-10 20:29:08,599] 79 root INFO - Executing Test ID:TC_004
+[2026-07-10 20:29:09,024] 78 root INFO - Schema unchanged (hash match) — reusing existing vector store
+[2026-07-10 20:29:09,024] 40 root INFO - Loading existing FAISS vector store from artifacts/vector_store
+[2026-07-10 20:29:09,994] 60 root INFO - get schema retriever function
+[2026-07-10 20:29:09,995] 52 root INFO - Invoking agent chain for question: Who are the top five customers by total transaction amount?
+[2026-07-10 20:29:11,007] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-embedding-2:batchEmbedContents "HTTP/1.1 200 OK"
+[2026-07-10 20:29:12,181] 68 root INFO - combine documents function
+[2026-07-10 20:29:12,183] 6510 google_genai.models INFO - AFC is enabled with max remote calls: 10.
+[2026-07-10 20:29:14,045] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+[2026-07-10 20:29:14,052] 47 root INFO - Generated SQL:
+SELECT TOP 5
+    c.CustomerName,
+    SUM(ct.TransactionAmount) AS TotalTransactionAmount
+FROM Sales.CustomerTransactions AS ct
+JOIN Sales.Customers AS c
+    ON ct.CustomerID = c.CustomerID
+GROUP BY
+    c.CustomerName
+ORDER BY
+    TotalTransactionAmount DESC;
+[2026-07-10 20:29:14,205] 49 root INFO - Query returned 5 rows
+[2026-07-10 20:29:14,208] 6510 google_genai.models INFO - AFC is enabled with max remote calls: 10.
+[2026-07-10 20:29:15,859] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+[2026-07-10 20:29:15,864] 90 root INFO - Test ID:TC_004 execution completed
+[2026-07-10 20:29:35,866] 79 root INFO - Executing Test ID:TC_007
+[2026-07-10 20:29:36,442] 78 root INFO - Schema unchanged (hash match) — reusing existing vector store
+[2026-07-10 20:29:36,443] 40 root INFO - Loading existing FAISS vector store from artifacts/vector_store
+[2026-07-10 20:29:37,950] 60 root INFO - get schema retriever function
+[2026-07-10 20:29:37,951] 52 root INFO - Invoking agent chain for question: Compare the average transaction amount across customer categories.
+[2026-07-10 20:29:38,486] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-embedding-2:batchEmbedContents "HTTP/1.1 200 OK"
+[2026-07-10 20:29:38,501] 68 root INFO - combine documents function
+[2026-07-10 20:29:38,503] 6510 google_genai.models INFO - AFC is enabled with max remote calls: 10.
+[2026-07-10 20:29:40,791] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+[2026-07-10 20:29:40,796] 47 root INFO - Generated SQL:
+SELECT
+  cc.CustomerCategoryName,
+  AVG(ct.TransactionAmount) AS AverageTransactionAmount
+FROM Sales.CustomerTransactions AS ct
+JOIN Website.Customers AS c
+  ON ct.CustomerID = c.CustomerID
+JOIN Sales.CustomerCategories AS cc
+  ON c.CustomerCategoryName = cc.CustomerCategoryName
+GROUP BY
+  cc.CustomerCategoryName;
+[2026-07-10 20:29:40,998] 49 root INFO - Query returned 5 rows
+[2026-07-10 20:29:41,001] 6510 google_genai.models INFO - AFC is enabled with max remote calls: 10.
+[2026-07-10 20:29:42,688] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+[2026-07-10 20:29:42,695] 90 root INFO - Test ID:TC_007 execution completed
+[2026-07-10 20:30:02,695] 79 root INFO - Executing Test ID:TC_008
+[2026-07-10 20:30:03,270] 78 root INFO - Schema unchanged (hash match) — reusing existing vector store
+[2026-07-10 20:30:03,270] 40 root INFO - Loading existing FAISS vector store from artifacts/vector_store
+[2026-07-10 20:30:04,633] 60 root INFO - get schema retriever function
+[2026-07-10 20:30:04,634] 52 root INFO - Invoking agent chain for question: Which stock items are currently below their reorder level?
+[2026-07-10 20:30:05,211] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-embedding-2:batchEmbedContents "HTTP/1.1 200 OK"
+[2026-07-10 20:30:05,226] 68 root INFO - combine documents function
+[2026-07-10 20:30:05,230] 6510 google_genai.models INFO - AFC is enabled with max remote calls: 10.
+[2026-07-10 20:30:06,808] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+[2026-07-10 20:30:06,816] 47 root INFO - Generated SQL:
+SELECT
+  SI.StockItemName
+FROM Warehouse.StockItems AS SI
+JOIN Warehouse.StockItemHoldings AS SIH
+  ON SI.StockItemID = SIH.StockItemID
+WHERE
+  SIH.QuantityOnHand < SIH.ReorderLevel;
+[2026-07-10 20:30:06,845] 49 root INFO - Query returned 2 rows
+[2026-07-10 20:30:06,848] 6510 google_genai.models INFO - AFC is enabled with max remote calls: 10.
+[2026-07-10 20:30:08,233] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+[2026-07-10 20:30:08,245] 90 root INFO - Test ID:TC_008 execution completed
+[2026-07-10 20:30:28,247] 79 root INFO - Executing Test ID:TC_009
+[2026-07-10 20:30:28,916] 78 root INFO - Schema unchanged (hash match) — reusing existing vector store
+[2026-07-10 20:30:28,916] 40 root INFO - Loading existing FAISS vector store from artifacts/vector_store
+[2026-07-10 20:30:30,440] 60 root INFO - get schema retriever function
+[2026-07-10 20:30:30,441] 52 root INFO - Invoking agent chain for question: Which supplier has the highest procurement spending?
+[2026-07-10 20:30:31,062] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-embedding-2:batchEmbedContents "HTTP/1.1 200 OK"
+[2026-07-10 20:30:31,082] 68 root INFO - combine documents function
+[2026-07-10 20:30:31,085] 6510 google_genai.models INFO - AFC is enabled with max remote calls: 10.
+[2026-07-10 20:30:33,123] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+[2026-07-10 20:30:33,134] 47 root INFO - Generated SQL:
+SELECT TOP 1
+    s.SupplierName
+FROM
+    Purchasing.SupplierTransactions st
+JOIN
+    Purchasing.Suppliers s ON st.SupplierID = s.SupplierID
+GROUP BY
+    s.SupplierID, s.SupplierName
+ORDER BY
+    SUM(st.TransactionAmount) DESC;
+[2026-07-10 20:30:33,191] 49 root INFO - Query returned 1 rows
+[2026-07-10 20:30:33,199] 6510 google_genai.models INFO - AFC is enabled with max remote calls: 10.
+[2026-07-10 20:30:35,011] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+[2026-07-10 20:30:35,019] 90 root INFO - Test ID:TC_009 execution completed
+[2026-07-10 20:30:55,020] 79 root INFO - Executing Test ID:TC_010
+[2026-07-10 20:30:55,363] 78 root INFO - Schema unchanged (hash match) — reusing existing vector store
+[2026-07-10 20:30:55,363] 40 root INFO - Loading existing FAISS vector store from artifacts/vector_store
+[2026-07-10 20:30:56,496] 60 root INFO - get schema retriever function
+[2026-07-10 20:30:56,496] 52 root INFO - Invoking agent chain for question: Identify the top three customers by revenue within each buying group.
+[2026-07-10 20:30:57,038] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-embedding-2:batchEmbedContents "HTTP/1.1 200 OK"
+[2026-07-10 20:30:57,060] 68 root INFO - combine documents function
+[2026-07-10 20:30:57,062] 6510 google_genai.models INFO - AFC is enabled with max remote calls: 10.
+[2026-07-10 20:30:58,666] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+[2026-07-10 20:30:58,670] 47 root INFO - Generated SQL:
+SELECT
+    bg.BuyingGroupName,
+    c.CustomerName,
+    SUM(ol.Quantity * ol.UnitPrice) AS TotalRevenue
+FROM Sales.Customers AS c
+JOIN Sales.BuyingGroups AS bg
+    ON c.BuyingGroupID = bg.BuyingGroupID
+JOIN Sales.Orders AS o
+    ON c.CustomerID = o.CustomerID
+JOIN Sales.OrderLines AS ol
+    ON o.OrderID = ol.OrderID
+GROUP BY
+    bg.BuyingGroupName,
+    c.CustomerName
+ORDER BY
+    bg.BuyingGroupName,
+    TotalRevenue DESC;
+[2026-07-10 20:31:23,960] 49 root INFO - Query returned 402 rows
+[2026-07-10 20:31:23,962] 6510 google_genai.models INFO - AFC is enabled with max remote calls: 10.
+[2026-07-10 20:31:27,507] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+[2026-07-10 20:31:27,515] 90 root INFO - Test ID:TC_010 execution completed

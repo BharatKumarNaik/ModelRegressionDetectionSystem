@@ -1,0 +1,1071 @@
+[2026-07-10 21:07:08,345] 91 root INFO - Executing Test ID:TC_001
+[2026-07-10 21:07:08,782] 78 root INFO - Schema unchanged (hash match) — reusing existing vector store
+[2026-07-10 21:07:08,782] 40 root INFO - Loading existing FAISS vector store from artifacts/vector_store
+[2026-07-10 21:07:09,584] 132 faiss.loader INFO - Loading faiss with AVX2 support.
+[2026-07-10 21:07:09,584] 137 faiss.loader INFO - Could not load library with AVX2 support due to:
+ModuleNotFoundError("No module named 'faiss.swigfaiss_avx2'")
+[2026-07-10 21:07:09,584] 156 faiss.loader INFO - Loading faiss.
+[2026-07-10 21:07:09,926] 158 faiss.loader INFO - Successfully loaded faiss.
+[2026-07-10 21:07:09,993] 60 root INFO - get schema retriever function
+[2026-07-10 21:07:09,998] 52 root INFO - Invoking agent chain for question: What is the total sales amount recorded in customer transactions?
+[2026-07-10 21:07:10,676] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-embedding-2:batchEmbedContents "HTTP/1.1 200 OK"
+[2026-07-10 21:07:10,691] 68 root INFO - combine documents function
+[2026-07-10 21:07:10,721] 6510 google_genai.models INFO - AFC is enabled with max remote calls: 10.
+[2026-07-10 21:08:05,556] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent "HTTP/1.1 503 Service Unavailable"
+[2026-07-10 21:08:05,556] 64 google_genai._api_client INFO - Retrying google.genai._api_client.BaseApiClient._request_once in 1.76 seconds as it raised ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}.
+[2026-07-10 21:08:09,323] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent "HTTP/1.1 503 Service Unavailable"
+[2026-07-10 21:08:09,323] 64 google_genai._api_client INFO - Retrying google.genai._api_client.BaseApiClient._request_once in 2.42 seconds as it raised ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}.
+[2026-07-10 21:08:13,914] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent "HTTP/1.1 503 Service Unavailable"
+[2026-07-10 21:08:13,914] 64 google_genai._api_client INFO - Retrying google.genai._api_client.BaseApiClient._request_once in 4.56 seconds as it raised ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}.
+[2026-07-10 21:08:20,110] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent "HTTP/1.1 503 Service Unavailable"
+[2026-07-10 21:08:20,111] 64 google_genai._api_client INFO - Retrying google.genai._api_client.BaseApiClient._request_once in 8.45 seconds as it raised ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}.
+[2026-07-10 21:08:32,734] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent "HTTP/1.1 503 Service Unavailable"
+[2026-07-10 21:08:32,734] 64 google_genai._api_client INFO - Retrying google.genai._api_client.BaseApiClient._request_once in 17 seconds as it raised ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}.
+[2026-07-10 21:08:51,323] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent "HTTP/1.1 503 Service Unavailable"
+[2026-07-10 21:08:51,323] 104 root ERROR - Test ID:TC_001 failed: Error occured in script: C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\runner\test_runner.py at line number: 53 with error message: Error occured in script: C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\llm\chains.py at line number: 23 with error message: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+Traceback (most recent call last):
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\llm\chains.py", line 23, in invoke_with_metrics
+    response = gemini_model.invoke(prompt_value)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 2754, in invoke
+    return super().invoke(input, config, stop=stop, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 476, in invoke
+    self.generate_prompt(
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1849, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1656, in generate
+    self._generate_with_cache(
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1994, in _generate_with_cache
+    result = self._generate(
+             ^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 3302, in _generate
+    response: GenerateContentResponse = self.client.models.generate_content(
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\google\genai\models.py", line 6526, in generate_content
+    response = self._generate_content(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\google\genai\models.py", line 4954, in _generate_content
+    response = self._api_client.request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\google\genai\_api_client.py", line 1618, in request
+    response = self._request(http_request, http_options, stream=False)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\google\genai\_api_client.py", line 1409, in _request
+    return retry(self._request_once, http_request, stream)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\tenacity\__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\tenacity\__init__.py", line 371, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\tenacity\__init__.py", line 413, in exc_check
+    raise retry_exc.reraise()
+          ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\tenacity\__init__.py", line 184, in reraise
+    raise self.last_attempt.result()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\tenacity\__init__.py", line 473, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\google\genai\_api_client.py", line 1388, in _request_once
+    errors.APIError.raise_for_response(response)
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\google\genai\errors.py", line 155, in raise_for_response
+    cls.raise_error(response.status_code, response_json, response)
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\google\genai\errors.py", line 186, in raise_error
+    raise ServerError(status_code, response_json, response)
+google.genai.errors.ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\runner\test_runner.py", line 53, in run_query
+    return agent_chain.invoke({"question": question})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\base.py", line 3444, in invoke
+    input_ = context.run(step.invoke, input_, config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\passthrough.py", line 511, in invoke
+    return self._call_with_config(self._invoke, input, config, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\base.py", line 2289, in _call_with_config
+    context.run(
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\config.py", line 526, in call_func_with_variable_args
+    return func(input, **kwargs)  # type: ignore[call-arg]
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\passthrough.py", line 497, in _invoke
+    **self.mapper.invoke(
+      ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\base.py", line 4174, in invoke
+    output = {
+             ^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\base.py", line 4175, in <dictcomp>
+    key: future.result()
+         ^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\_base.py", line 456, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\base.py", line 4158, in _invoke_step
+    return context.run(
+           ^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\base.py", line 3444, in invoke
+    input_ = context.run(step.invoke, input_, config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\base.py", line 5313, in invoke
+    return self._call_with_config(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\base.py", line 2289, in _call_with_config
+    context.run(
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\config.py", line 526, in call_func_with_variable_args
+    return func(input, **kwargs)  # type: ignore[call-arg]
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\base.py", line 5170, in _invoke
+    output = call_func_with_variable_args(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\config.py", line 526, in call_func_with_variable_args
+    return func(input, **kwargs)  # type: ignore[call-arg]
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\llm\chains.py", line 35, in invoke_with_metrics
+    raise MRDException(e,sys) from e
+src.utils.exception.MRDException: Error occured in script: C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\llm\chains.py at line number: 23 with error message: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\runner\test_runner.py", line 93, in <module>
+    answer = run_query(user_query)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\runner\test_runner.py", line 55, in run_query
+    raise MRDException(e,sys) from e
+src.utils.exception.MRDException: Error occured in script: C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\runner\test_runner.py at line number: 53 with error message: Error occured in script: C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\llm\chains.py at line number: 23 with error message: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+[2026-07-10 21:08:51,514] 91 root INFO - Executing Test ID:TC_003
+[2026-07-10 21:08:51,846] 78 root INFO - Schema unchanged (hash match) — reusing existing vector store
+[2026-07-10 21:08:51,846] 40 root INFO - Loading existing FAISS vector store from artifacts/vector_store
+[2026-07-10 21:08:52,684] 60 root INFO - get schema retriever function
+[2026-07-10 21:08:52,684] 52 root INFO - Invoking agent chain for question: Show the monthly sales trend across all available years.
+[2026-07-10 21:08:53,234] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-embedding-2:batchEmbedContents "HTTP/1.1 200 OK"
+[2026-07-10 21:08:53,250] 68 root INFO - combine documents function
+[2026-07-10 21:08:53,250] 6510 google_genai.models INFO - AFC is enabled with max remote calls: 10.
+[2026-07-10 21:08:54,629] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent "HTTP/1.1 503 Service Unavailable"
+[2026-07-10 21:08:54,629] 64 google_genai._api_client INFO - Retrying google.genai._api_client.BaseApiClient._request_once in 1.69 seconds as it raised ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}.
+[2026-07-10 21:08:58,028] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent "HTTP/1.1 503 Service Unavailable"
+[2026-07-10 21:08:58,028] 64 google_genai._api_client INFO - Retrying google.genai._api_client.BaseApiClient._request_once in 2.48 seconds as it raised ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}.
+[2026-07-10 21:09:00,685] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent "HTTP/1.1 429 Too Many Requests"
+[2026-07-10 21:09:00,685] 64 google_genai._api_client INFO - Retrying google.genai._api_client.BaseApiClient._request_once in 4.38 seconds as it raised ClientError: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5, model: gemini-3.5-flash\nPlease retry in 59.300481984s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.5-flash'}, 'quotaValue': '5'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '59s'}]}}.
+[2026-07-10 21:09:06,510] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent "HTTP/1.1 503 Service Unavailable"
+[2026-07-10 21:09:06,510] 64 google_genai._api_client INFO - Retrying google.genai._api_client.BaseApiClient._request_once in 8.84 seconds as it raised ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}.
+[2026-07-10 21:09:16,918] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent "HTTP/1.1 503 Service Unavailable"
+[2026-07-10 21:09:16,918] 64 google_genai._api_client INFO - Retrying google.genai._api_client.BaseApiClient._request_once in 16.2 seconds as it raised ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}.
+[2026-07-10 21:09:34,709] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent "HTTP/1.1 503 Service Unavailable"
+[2026-07-10 21:09:34,712] 104 root ERROR - Test ID:TC_003 failed: Error occured in script: C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\runner\test_runner.py at line number: 53 with error message: Error occured in script: C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\llm\chains.py at line number: 23 with error message: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+Traceback (most recent call last):
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\llm\chains.py", line 23, in invoke_with_metrics
+    response = gemini_model.invoke(prompt_value)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 2754, in invoke
+    return super().invoke(input, config, stop=stop, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 476, in invoke
+    self.generate_prompt(
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1849, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1656, in generate
+    self._generate_with_cache(
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1994, in _generate_with_cache
+    result = self._generate(
+             ^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 3302, in _generate
+    response: GenerateContentResponse = self.client.models.generate_content(
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\google\genai\models.py", line 6526, in generate_content
+    response = self._generate_content(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\google\genai\models.py", line 4954, in _generate_content
+    response = self._api_client.request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\google\genai\_api_client.py", line 1618, in request
+    response = self._request(http_request, http_options, stream=False)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\google\genai\_api_client.py", line 1409, in _request
+    return retry(self._request_once, http_request, stream)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\tenacity\__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\tenacity\__init__.py", line 371, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\tenacity\__init__.py", line 413, in exc_check
+    raise retry_exc.reraise()
+          ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\tenacity\__init__.py", line 184, in reraise
+    raise self.last_attempt.result()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\tenacity\__init__.py", line 473, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\google\genai\_api_client.py", line 1388, in _request_once
+    errors.APIError.raise_for_response(response)
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\google\genai\errors.py", line 155, in raise_for_response
+    cls.raise_error(response.status_code, response_json, response)
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\google\genai\errors.py", line 186, in raise_error
+    raise ServerError(status_code, response_json, response)
+google.genai.errors.ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\runner\test_runner.py", line 53, in run_query
+    return agent_chain.invoke({"question": question})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\base.py", line 3444, in invoke
+    input_ = context.run(step.invoke, input_, config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\passthrough.py", line 511, in invoke
+    return self._call_with_config(self._invoke, input, config, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\base.py", line 2289, in _call_with_config
+    context.run(
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\config.py", line 526, in call_func_with_variable_args
+    return func(input, **kwargs)  # type: ignore[call-arg]
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\passthrough.py", line 497, in _invoke
+    **self.mapper.invoke(
+      ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\base.py", line 4174, in invoke
+    output = {
+             ^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\base.py", line 4175, in <dictcomp>
+    key: future.result()
+         ^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\_base.py", line 456, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\base.py", line 4158, in _invoke_step
+    return context.run(
+           ^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\base.py", line 3444, in invoke
+    input_ = context.run(step.invoke, input_, config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\base.py", line 5313, in invoke
+    return self._call_with_config(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\base.py", line 2289, in _call_with_config
+    context.run(
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\config.py", line 526, in call_func_with_variable_args
+    return func(input, **kwargs)  # type: ignore[call-arg]
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\base.py", line 5170, in _invoke
+    output = call_func_with_variable_args(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\config.py", line 526, in call_func_with_variable_args
+    return func(input, **kwargs)  # type: ignore[call-arg]
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\llm\chains.py", line 35, in invoke_with_metrics
+    raise MRDException(e,sys) from e
+src.utils.exception.MRDException: Error occured in script: C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\llm\chains.py at line number: 23 with error message: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\runner\test_runner.py", line 93, in <module>
+    answer = run_query(user_query)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\runner\test_runner.py", line 55, in run_query
+    raise MRDException(e,sys) from e
+src.utils.exception.MRDException: Error occured in script: C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\runner\test_runner.py at line number: 53 with error message: Error occured in script: C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\llm\chains.py at line number: 23 with error message: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+[2026-07-10 21:09:34,712] 91 root INFO - Executing Test ID:TC_004
+[2026-07-10 21:09:35,025] 78 root INFO - Schema unchanged (hash match) — reusing existing vector store
+[2026-07-10 21:09:35,025] 40 root INFO - Loading existing FAISS vector store from artifacts/vector_store
+[2026-07-10 21:09:35,801] 60 root INFO - get schema retriever function
+[2026-07-10 21:09:35,801] 52 root INFO - Invoking agent chain for question: Who are the top five customers by total transaction amount?
+[2026-07-10 21:09:36,310] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-embedding-2:batchEmbedContents "HTTP/1.1 200 OK"
+[2026-07-10 21:09:36,326] 68 root INFO - combine documents function
+[2026-07-10 21:09:36,326] 6510 google_genai.models INFO - AFC is enabled with max remote calls: 10.
+[2026-07-10 21:09:50,100] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent "HTTP/1.1 503 Service Unavailable"
+[2026-07-10 21:09:50,100] 64 google_genai._api_client INFO - Retrying google.genai._api_client.BaseApiClient._request_once in 1.68 seconds as it raised ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}.
+[2026-07-10 21:09:53,299] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent "HTTP/1.1 503 Service Unavailable"
+[2026-07-10 21:09:53,299] 64 google_genai._api_client INFO - Retrying google.genai._api_client.BaseApiClient._request_once in 2.63 seconds as it raised ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}.
+[2026-07-10 21:09:57,739] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent "HTTP/1.1 503 Service Unavailable"
+[2026-07-10 21:09:57,740] 64 google_genai._api_client INFO - Retrying google.genai._api_client.BaseApiClient._request_once in 4.47 seconds as it raised ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}.
+[2026-07-10 21:10:03,806] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent "HTTP/1.1 503 Service Unavailable"
+[2026-07-10 21:10:03,806] 64 google_genai._api_client INFO - Retrying google.genai._api_client.BaseApiClient._request_once in 8.5 seconds as it raised ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}.
+[2026-07-10 21:10:14,388] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent "HTTP/1.1 503 Service Unavailable"
+[2026-07-10 21:10:14,401] 64 google_genai._api_client INFO - Retrying google.genai._api_client.BaseApiClient._request_once in 16.6 seconds as it raised ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}.
+[2026-07-10 21:10:32,775] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent "HTTP/1.1 503 Service Unavailable"
+[2026-07-10 21:10:32,775] 104 root ERROR - Test ID:TC_004 failed: Error occured in script: C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\runner\test_runner.py at line number: 53 with error message: Error occured in script: C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\llm\chains.py at line number: 23 with error message: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+Traceback (most recent call last):
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\llm\chains.py", line 23, in invoke_with_metrics
+    response = gemini_model.invoke(prompt_value)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 2754, in invoke
+    return super().invoke(input, config, stop=stop, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 476, in invoke
+    self.generate_prompt(
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1849, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1656, in generate
+    self._generate_with_cache(
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1994, in _generate_with_cache
+    result = self._generate(
+             ^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 3302, in _generate
+    response: GenerateContentResponse = self.client.models.generate_content(
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\google\genai\models.py", line 6526, in generate_content
+    response = self._generate_content(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\google\genai\models.py", line 4954, in _generate_content
+    response = self._api_client.request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\google\genai\_api_client.py", line 1618, in request
+    response = self._request(http_request, http_options, stream=False)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\google\genai\_api_client.py", line 1409, in _request
+    return retry(self._request_once, http_request, stream)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\tenacity\__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\tenacity\__init__.py", line 371, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\tenacity\__init__.py", line 413, in exc_check
+    raise retry_exc.reraise()
+          ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\tenacity\__init__.py", line 184, in reraise
+    raise self.last_attempt.result()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\tenacity\__init__.py", line 473, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\google\genai\_api_client.py", line 1388, in _request_once
+    errors.APIError.raise_for_response(response)
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\google\genai\errors.py", line 155, in raise_for_response
+    cls.raise_error(response.status_code, response_json, response)
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\google\genai\errors.py", line 186, in raise_error
+    raise ServerError(status_code, response_json, response)
+google.genai.errors.ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\runner\test_runner.py", line 53, in run_query
+    return agent_chain.invoke({"question": question})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\base.py", line 3444, in invoke
+    input_ = context.run(step.invoke, input_, config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\passthrough.py", line 511, in invoke
+    return self._call_with_config(self._invoke, input, config, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\base.py", line 2289, in _call_with_config
+    context.run(
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\config.py", line 526, in call_func_with_variable_args
+    return func(input, **kwargs)  # type: ignore[call-arg]
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\passthrough.py", line 497, in _invoke
+    **self.mapper.invoke(
+      ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\base.py", line 4174, in invoke
+    output = {
+             ^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\base.py", line 4175, in <dictcomp>
+    key: future.result()
+         ^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\_base.py", line 456, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\base.py", line 4158, in _invoke_step
+    return context.run(
+           ^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\base.py", line 3444, in invoke
+    input_ = context.run(step.invoke, input_, config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\base.py", line 5313, in invoke
+    return self._call_with_config(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\base.py", line 2289, in _call_with_config
+    context.run(
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\config.py", line 526, in call_func_with_variable_args
+    return func(input, **kwargs)  # type: ignore[call-arg]
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\base.py", line 5170, in _invoke
+    output = call_func_with_variable_args(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\config.py", line 526, in call_func_with_variable_args
+    return func(input, **kwargs)  # type: ignore[call-arg]
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\llm\chains.py", line 35, in invoke_with_metrics
+    raise MRDException(e,sys) from e
+src.utils.exception.MRDException: Error occured in script: C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\llm\chains.py at line number: 23 with error message: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\runner\test_runner.py", line 93, in <module>
+    answer = run_query(user_query)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\runner\test_runner.py", line 55, in run_query
+    raise MRDException(e,sys) from e
+src.utils.exception.MRDException: Error occured in script: C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\runner\test_runner.py at line number: 53 with error message: Error occured in script: C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\llm\chains.py at line number: 23 with error message: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+[2026-07-10 21:10:32,783] 91 root INFO - Executing Test ID:TC_007
+[2026-07-10 21:10:32,829] 78 root INFO - Schema unchanged (hash match) — reusing existing vector store
+[2026-07-10 21:10:32,829] 40 root INFO - Loading existing FAISS vector store from artifacts/vector_store
+[2026-07-10 21:10:33,605] 60 root INFO - get schema retriever function
+[2026-07-10 21:10:33,605] 52 root INFO - Invoking agent chain for question: Compare the average transaction amount across customer categories.
+[2026-07-10 21:10:34,143] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-embedding-2:batchEmbedContents "HTTP/1.1 200 OK"
+[2026-07-10 21:10:34,163] 68 root INFO - combine documents function
+[2026-07-10 21:10:34,163] 6510 google_genai.models INFO - AFC is enabled with max remote calls: 10.
+[2026-07-10 21:10:36,373] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent "HTTP/1.1 503 Service Unavailable"
+[2026-07-10 21:10:36,373] 64 google_genai._api_client INFO - Retrying google.genai._api_client.BaseApiClient._request_once in 1.13 seconds as it raised ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}.
+[2026-07-10 21:10:39,587] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent "HTTP/1.1 503 Service Unavailable"
+[2026-07-10 21:10:39,587] 64 google_genai._api_client INFO - Retrying google.genai._api_client.BaseApiClient._request_once in 2.9 seconds as it raised ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}.
+[2026-07-10 21:10:43,972] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent "HTTP/1.1 503 Service Unavailable"
+[2026-07-10 21:10:43,972] 64 google_genai._api_client INFO - Retrying google.genai._api_client.BaseApiClient._request_once in 4.21 seconds as it raised ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}.
+[2026-07-10 21:10:49,680] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent "HTTP/1.1 503 Service Unavailable"
+[2026-07-10 21:10:49,682] 64 google_genai._api_client INFO - Retrying google.genai._api_client.BaseApiClient._request_once in 8.27 seconds as it raised ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}.
+[2026-07-10 21:10:58,153] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent "HTTP/1.1 429 Too Many Requests"
+[2026-07-10 21:10:58,153] 64 google_genai._api_client INFO - Retrying google.genai._api_client.BaseApiClient._request_once in 16.5 seconds as it raised ClientError: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.5-flash\nPlease retry in 1.828726956s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '1s'}]}}.
+[2026-07-10 21:11:14,861] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent "HTTP/1.1 429 Too Many Requests"
+[2026-07-10 21:11:14,861] 104 root ERROR - Test ID:TC_007 failed: Error occured in script: C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\runner\test_runner.py at line number: 53 with error message: Error occured in script: C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\llm\chains.py at line number: 23 with error message: Error calling model 'gemini-3.5-flash' (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.5-flash\nPlease retry in 45.124718672s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-3.5-flash', 'location': 'global'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '45s'}]}}
+Traceback (most recent call last):
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 3302, in _generate
+    response: GenerateContentResponse = self.client.models.generate_content(
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\google\genai\models.py", line 6526, in generate_content
+    response = self._generate_content(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\google\genai\models.py", line 4954, in _generate_content
+    response = self._api_client.request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\google\genai\_api_client.py", line 1618, in request
+    response = self._request(http_request, http_options, stream=False)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\google\genai\_api_client.py", line 1409, in _request
+    return retry(self._request_once, http_request, stream)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\tenacity\__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\tenacity\__init__.py", line 371, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\tenacity\__init__.py", line 413, in exc_check
+    raise retry_exc.reraise()
+          ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\tenacity\__init__.py", line 184, in reraise
+    raise self.last_attempt.result()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\tenacity\__init__.py", line 473, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\google\genai\_api_client.py", line 1388, in _request_once
+    errors.APIError.raise_for_response(response)
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\google\genai\errors.py", line 155, in raise_for_response
+    cls.raise_error(response.status_code, response_json, response)
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\google\genai\errors.py", line 184, in raise_error
+    raise ClientError(status_code, response_json, response)
+google.genai.errors.ClientError: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.5-flash\nPlease retry in 45.124718672s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-3.5-flash', 'location': 'global'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '45s'}]}}
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\llm\chains.py", line 23, in invoke_with_metrics
+    response = gemini_model.invoke(prompt_value)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 2754, in invoke
+    return super().invoke(input, config, stop=stop, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 476, in invoke
+    self.generate_prompt(
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1849, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1656, in generate
+    self._generate_with_cache(
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1994, in _generate_with_cache
+    result = self._generate(
+             ^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 3306, in _generate
+    _handle_client_error(e, request)
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 177, in _handle_client_error
+    raise ChatGoogleGenerativeAIError(msg) from e
+langchain_google_genai.chat_models.ChatGoogleGenerativeAIError: Error calling model 'gemini-3.5-flash' (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.5-flash\nPlease retry in 45.124718672s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-3.5-flash', 'location': 'global'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '45s'}]}}
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\runner\test_runner.py", line 53, in run_query
+    return agent_chain.invoke({"question": question})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\base.py", line 3444, in invoke
+    input_ = context.run(step.invoke, input_, config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\passthrough.py", line 511, in invoke
+    return self._call_with_config(self._invoke, input, config, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\base.py", line 2289, in _call_with_config
+    context.run(
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\config.py", line 526, in call_func_with_variable_args
+    return func(input, **kwargs)  # type: ignore[call-arg]
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\passthrough.py", line 497, in _invoke
+    **self.mapper.invoke(
+      ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\base.py", line 4174, in invoke
+    output = {
+             ^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\base.py", line 4175, in <dictcomp>
+    key: future.result()
+         ^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\_base.py", line 456, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\base.py", line 4158, in _invoke_step
+    return context.run(
+           ^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\base.py", line 3444, in invoke
+    input_ = context.run(step.invoke, input_, config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\base.py", line 5313, in invoke
+    return self._call_with_config(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\base.py", line 2289, in _call_with_config
+    context.run(
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\config.py", line 526, in call_func_with_variable_args
+    return func(input, **kwargs)  # type: ignore[call-arg]
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\base.py", line 5170, in _invoke
+    output = call_func_with_variable_args(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\config.py", line 526, in call_func_with_variable_args
+    return func(input, **kwargs)  # type: ignore[call-arg]
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\llm\chains.py", line 35, in invoke_with_metrics
+    raise MRDException(e,sys) from e
+src.utils.exception.MRDException: Error occured in script: C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\llm\chains.py at line number: 23 with error message: Error calling model 'gemini-3.5-flash' (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.5-flash\nPlease retry in 45.124718672s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-3.5-flash', 'location': 'global'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '45s'}]}}
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\runner\test_runner.py", line 93, in <module>
+    answer = run_query(user_query)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\runner\test_runner.py", line 55, in run_query
+    raise MRDException(e,sys) from e
+src.utils.exception.MRDException: Error occured in script: C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\runner\test_runner.py at line number: 53 with error message: Error occured in script: C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\llm\chains.py at line number: 23 with error message: Error calling model 'gemini-3.5-flash' (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.5-flash\nPlease retry in 45.124718672s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-3.5-flash', 'location': 'global'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '45s'}]}}
+[2026-07-10 21:11:14,861] 91 root INFO - Executing Test ID:TC_008
+[2026-07-10 21:11:15,129] 78 root INFO - Schema unchanged (hash match) — reusing existing vector store
+[2026-07-10 21:11:15,129] 40 root INFO - Loading existing FAISS vector store from artifacts/vector_store
+[2026-07-10 21:11:15,966] 60 root INFO - get schema retriever function
+[2026-07-10 21:11:15,966] 52 root INFO - Invoking agent chain for question: Which stock items are currently below their reorder level?
+[2026-07-10 21:11:16,440] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-embedding-2:batchEmbedContents "HTTP/1.1 200 OK"
+[2026-07-10 21:11:16,464] 68 root INFO - combine documents function
+[2026-07-10 21:11:16,466] 6510 google_genai.models INFO - AFC is enabled with max remote calls: 10.
+[2026-07-10 21:11:16,621] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent "HTTP/1.1 429 Too Many Requests"
+[2026-07-10 21:11:16,621] 64 google_genai._api_client INFO - Retrying google.genai._api_client.BaseApiClient._request_once in 1.17 seconds as it raised ClientError: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.5-flash\nPlease retry in 43.367515238s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '43s'}]}}.
+[2026-07-10 21:11:17,946] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent "HTTP/1.1 429 Too Many Requests"
+[2026-07-10 21:11:17,946] 64 google_genai._api_client INFO - Retrying google.genai._api_client.BaseApiClient._request_once in 2.26 seconds as it raised ClientError: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.5-flash\nPlease retry in 42.03997149s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-3.5-flash', 'location': 'global'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '42s'}]}}.
+[2026-07-10 21:11:20,371] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent "HTTP/1.1 429 Too Many Requests"
+[2026-07-10 21:11:20,373] 64 google_genai._api_client INFO - Retrying google.genai._api_client.BaseApiClient._request_once in 4.89 seconds as it raised ClientError: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.5-flash\nPlease retry in 39.61455501s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '39s'}]}}.
+[2026-07-10 21:11:25,399] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent "HTTP/1.1 429 Too Many Requests"
+[2026-07-10 21:11:25,399] 64 google_genai._api_client INFO - Retrying google.genai._api_client.BaseApiClient._request_once in 8.54 seconds as it raised ClientError: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.5-flash\nPlease retry in 34.578208228s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '34s'}]}}.
+[2026-07-10 21:11:34,220] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent "HTTP/1.1 429 Too Many Requests"
+[2026-07-10 21:11:34,220] 64 google_genai._api_client INFO - Retrying google.genai._api_client.BaseApiClient._request_once in 16.9 seconds as it raised ClientError: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.5-flash\nPlease retry in 25.810233539s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '25s'}]}}.
+[2026-07-10 21:11:51,361] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent "HTTP/1.1 429 Too Many Requests"
+[2026-07-10 21:11:51,361] 104 root ERROR - Test ID:TC_008 failed: Error occured in script: C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\runner\test_runner.py at line number: 53 with error message: Error occured in script: C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\llm\chains.py at line number: 23 with error message: Error calling model 'gemini-3.5-flash' (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.5-flash\nPlease retry in 8.624307958s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '8s'}]}}
+Traceback (most recent call last):
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 3302, in _generate
+    response: GenerateContentResponse = self.client.models.generate_content(
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\google\genai\models.py", line 6526, in generate_content
+    response = self._generate_content(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\google\genai\models.py", line 4954, in _generate_content
+    response = self._api_client.request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\google\genai\_api_client.py", line 1618, in request
+    response = self._request(http_request, http_options, stream=False)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\google\genai\_api_client.py", line 1409, in _request
+    return retry(self._request_once, http_request, stream)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\tenacity\__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\tenacity\__init__.py", line 371, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\tenacity\__init__.py", line 413, in exc_check
+    raise retry_exc.reraise()
+          ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\tenacity\__init__.py", line 184, in reraise
+    raise self.last_attempt.result()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\tenacity\__init__.py", line 473, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\google\genai\_api_client.py", line 1388, in _request_once
+    errors.APIError.raise_for_response(response)
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\google\genai\errors.py", line 155, in raise_for_response
+    cls.raise_error(response.status_code, response_json, response)
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\google\genai\errors.py", line 184, in raise_error
+    raise ClientError(status_code, response_json, response)
+google.genai.errors.ClientError: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.5-flash\nPlease retry in 8.624307958s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '8s'}]}}
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\llm\chains.py", line 23, in invoke_with_metrics
+    response = gemini_model.invoke(prompt_value)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 2754, in invoke
+    return super().invoke(input, config, stop=stop, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 476, in invoke
+    self.generate_prompt(
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1849, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1656, in generate
+    self._generate_with_cache(
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1994, in _generate_with_cache
+    result = self._generate(
+             ^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 3306, in _generate
+    _handle_client_error(e, request)
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 177, in _handle_client_error
+    raise ChatGoogleGenerativeAIError(msg) from e
+langchain_google_genai.chat_models.ChatGoogleGenerativeAIError: Error calling model 'gemini-3.5-flash' (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.5-flash\nPlease retry in 8.624307958s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '8s'}]}}
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\runner\test_runner.py", line 53, in run_query
+    return agent_chain.invoke({"question": question})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\base.py", line 3444, in invoke
+    input_ = context.run(step.invoke, input_, config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\passthrough.py", line 511, in invoke
+    return self._call_with_config(self._invoke, input, config, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\base.py", line 2289, in _call_with_config
+    context.run(
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\config.py", line 526, in call_func_with_variable_args
+    return func(input, **kwargs)  # type: ignore[call-arg]
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\passthrough.py", line 497, in _invoke
+    **self.mapper.invoke(
+      ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\base.py", line 4174, in invoke
+    output = {
+             ^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\base.py", line 4175, in <dictcomp>
+    key: future.result()
+         ^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\_base.py", line 456, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\base.py", line 4158, in _invoke_step
+    return context.run(
+           ^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\base.py", line 3444, in invoke
+    input_ = context.run(step.invoke, input_, config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\base.py", line 5313, in invoke
+    return self._call_with_config(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\base.py", line 2289, in _call_with_config
+    context.run(
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\config.py", line 526, in call_func_with_variable_args
+    return func(input, **kwargs)  # type: ignore[call-arg]
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\base.py", line 5170, in _invoke
+    output = call_func_with_variable_args(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\config.py", line 526, in call_func_with_variable_args
+    return func(input, **kwargs)  # type: ignore[call-arg]
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\llm\chains.py", line 35, in invoke_with_metrics
+    raise MRDException(e,sys) from e
+src.utils.exception.MRDException: Error occured in script: C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\llm\chains.py at line number: 23 with error message: Error calling model 'gemini-3.5-flash' (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.5-flash\nPlease retry in 8.624307958s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '8s'}]}}
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\runner\test_runner.py", line 93, in <module>
+    answer = run_query(user_query)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\runner\test_runner.py", line 55, in run_query
+    raise MRDException(e,sys) from e
+src.utils.exception.MRDException: Error occured in script: C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\runner\test_runner.py at line number: 53 with error message: Error occured in script: C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\llm\chains.py at line number: 23 with error message: Error calling model 'gemini-3.5-flash' (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.5-flash\nPlease retry in 8.624307958s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '8s'}]}}
+[2026-07-10 21:11:51,365] 91 root INFO - Executing Test ID:TC_009
+[2026-07-10 21:11:51,723] 78 root INFO - Schema unchanged (hash match) — reusing existing vector store
+[2026-07-10 21:11:51,723] 40 root INFO - Loading existing FAISS vector store from artifacts/vector_store
+[2026-07-10 21:11:52,496] 60 root INFO - get schema retriever function
+[2026-07-10 21:11:52,496] 52 root INFO - Invoking agent chain for question: Which supplier has the highest procurement spending?
+[2026-07-10 21:11:52,977] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-embedding-2:batchEmbedContents "HTTP/1.1 200 OK"
+[2026-07-10 21:11:52,982] 68 root INFO - combine documents function
+[2026-07-10 21:11:52,982] 6510 google_genai.models INFO - AFC is enabled with max remote calls: 10.
+[2026-07-10 21:11:53,143] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent "HTTP/1.1 429 Too Many Requests"
+[2026-07-10 21:11:53,143] 64 google_genai._api_client INFO - Retrying google.genai._api_client.BaseApiClient._request_once in 1.37 seconds as it raised ClientError: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.5-flash\nPlease retry in 6.833406864s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '6s'}]}}.
+[2026-07-10 21:11:54,683] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent "HTTP/1.1 429 Too Many Requests"
+[2026-07-10 21:11:54,683] 64 google_genai._api_client INFO - Retrying google.genai._api_client.BaseApiClient._request_once in 2.32 seconds as it raised ClientError: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.5-flash\nPlease retry in 5.301153743s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '5s'}]}}.
+[2026-07-10 21:11:57,146] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent "HTTP/1.1 429 Too Many Requests"
+[2026-07-10 21:11:57,146] 64 google_genai._api_client INFO - Retrying google.genai._api_client.BaseApiClient._request_once in 4.66 seconds as it raised ClientError: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.5-flash\nPlease retry in 2.82943246s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-3.5-flash', 'location': 'global'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '2s'}]}}.
+[2026-07-10 21:12:03,678] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent "HTTP/1.1 503 Service Unavailable"
+[2026-07-10 21:12:03,678] 64 google_genai._api_client INFO - Retrying google.genai._api_client.BaseApiClient._request_once in 8.22 seconds as it raised ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}.
+[2026-07-10 21:12:12,132] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent "HTTP/1.1 429 Too Many Requests"
+[2026-07-10 21:12:12,132] 64 google_genai._api_client INFO - Retrying google.genai._api_client.BaseApiClient._request_once in 16.5 seconds as it raised ClientError: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.5-flash\nPlease retry in 47.846581651s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '47s'}]}}.
+[2026-07-10 21:12:28,877] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent "HTTP/1.1 429 Too Many Requests"
+[2026-07-10 21:12:28,877] 104 root ERROR - Test ID:TC_009 failed: Error occured in script: C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\runner\test_runner.py at line number: 53 with error message: Error occured in script: C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\llm\chains.py at line number: 23 with error message: Error calling model 'gemini-3.5-flash' (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.5-flash\nPlease retry in 31.100375419s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '31s'}]}}
+Traceback (most recent call last):
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 3302, in _generate
+    response: GenerateContentResponse = self.client.models.generate_content(
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\google\genai\models.py", line 6526, in generate_content
+    response = self._generate_content(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\google\genai\models.py", line 4954, in _generate_content
+    response = self._api_client.request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\google\genai\_api_client.py", line 1618, in request
+    response = self._request(http_request, http_options, stream=False)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\google\genai\_api_client.py", line 1409, in _request
+    return retry(self._request_once, http_request, stream)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\tenacity\__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\tenacity\__init__.py", line 371, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\tenacity\__init__.py", line 413, in exc_check
+    raise retry_exc.reraise()
+          ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\tenacity\__init__.py", line 184, in reraise
+    raise self.last_attempt.result()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\tenacity\__init__.py", line 473, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\google\genai\_api_client.py", line 1388, in _request_once
+    errors.APIError.raise_for_response(response)
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\google\genai\errors.py", line 155, in raise_for_response
+    cls.raise_error(response.status_code, response_json, response)
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\google\genai\errors.py", line 184, in raise_error
+    raise ClientError(status_code, response_json, response)
+google.genai.errors.ClientError: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.5-flash\nPlease retry in 31.100375419s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '31s'}]}}
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\llm\chains.py", line 23, in invoke_with_metrics
+    response = gemini_model.invoke(prompt_value)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 2754, in invoke
+    return super().invoke(input, config, stop=stop, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 476, in invoke
+    self.generate_prompt(
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1849, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1656, in generate
+    self._generate_with_cache(
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1994, in _generate_with_cache
+    result = self._generate(
+             ^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 3306, in _generate
+    _handle_client_error(e, request)
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 177, in _handle_client_error
+    raise ChatGoogleGenerativeAIError(msg) from e
+langchain_google_genai.chat_models.ChatGoogleGenerativeAIError: Error calling model 'gemini-3.5-flash' (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.5-flash\nPlease retry in 31.100375419s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '31s'}]}}
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\runner\test_runner.py", line 53, in run_query
+    return agent_chain.invoke({"question": question})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\base.py", line 3444, in invoke
+    input_ = context.run(step.invoke, input_, config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\passthrough.py", line 511, in invoke
+    return self._call_with_config(self._invoke, input, config, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\base.py", line 2289, in _call_with_config
+    context.run(
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\config.py", line 526, in call_func_with_variable_args
+    return func(input, **kwargs)  # type: ignore[call-arg]
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\passthrough.py", line 497, in _invoke
+    **self.mapper.invoke(
+      ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\base.py", line 4174, in invoke
+    output = {
+             ^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\base.py", line 4175, in <dictcomp>
+    key: future.result()
+         ^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\_base.py", line 456, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\base.py", line 4158, in _invoke_step
+    return context.run(
+           ^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\base.py", line 3444, in invoke
+    input_ = context.run(step.invoke, input_, config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\base.py", line 5313, in invoke
+    return self._call_with_config(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\base.py", line 2289, in _call_with_config
+    context.run(
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\config.py", line 526, in call_func_with_variable_args
+    return func(input, **kwargs)  # type: ignore[call-arg]
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\base.py", line 5170, in _invoke
+    output = call_func_with_variable_args(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\config.py", line 526, in call_func_with_variable_args
+    return func(input, **kwargs)  # type: ignore[call-arg]
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\llm\chains.py", line 35, in invoke_with_metrics
+    raise MRDException(e,sys) from e
+src.utils.exception.MRDException: Error occured in script: C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\llm\chains.py at line number: 23 with error message: Error calling model 'gemini-3.5-flash' (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.5-flash\nPlease retry in 31.100375419s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '31s'}]}}
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\runner\test_runner.py", line 93, in <module>
+    answer = run_query(user_query)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\runner\test_runner.py", line 55, in run_query
+    raise MRDException(e,sys) from e
+src.utils.exception.MRDException: Error occured in script: C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\runner\test_runner.py at line number: 53 with error message: Error occured in script: C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\llm\chains.py at line number: 23 with error message: Error calling model 'gemini-3.5-flash' (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.5-flash\nPlease retry in 31.100375419s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '31s'}]}}
+[2026-07-10 21:12:28,877] 91 root INFO - Executing Test ID:TC_010
+[2026-07-10 21:12:28,945] 78 root INFO - Schema unchanged (hash match) — reusing existing vector store
+[2026-07-10 21:12:28,945] 40 root INFO - Loading existing FAISS vector store from artifacts/vector_store
+[2026-07-10 21:12:29,730] 60 root INFO - get schema retriever function
+[2026-07-10 21:12:29,730] 52 root INFO - Invoking agent chain for question: Identify the top three customers by revenue within each buying group.
+[2026-07-10 21:12:30,272] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-embedding-2:batchEmbedContents "HTTP/1.1 200 OK"
+[2026-07-10 21:12:30,281] 68 root INFO - combine documents function
+[2026-07-10 21:12:30,281] 6510 google_genai.models INFO - AFC is enabled with max remote calls: 10.
+[2026-07-10 21:12:30,453] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent "HTTP/1.1 429 Too Many Requests"
+[2026-07-10 21:12:30,453] 64 google_genai._api_client INFO - Retrying google.genai._api_client.BaseApiClient._request_once in 1.45 seconds as it raised ClientError: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.5-flash\nPlease retry in 29.528091551s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '29s'}]}}.
+[2026-07-10 21:12:32,046] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent "HTTP/1.1 429 Too Many Requests"
+[2026-07-10 21:12:32,046] 64 google_genai._api_client INFO - Retrying google.genai._api_client.BaseApiClient._request_once in 2.75 seconds as it raised ClientError: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.5-flash\nPlease retry in 27.929295078s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-3.5-flash', 'location': 'global'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '27s'}]}}.
+[2026-07-10 21:12:34,950] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent "HTTP/1.1 429 Too Many Requests"
+[2026-07-10 21:12:34,950] 64 google_genai._api_client INFO - Retrying google.genai._api_client.BaseApiClient._request_once in 4.41 seconds as it raised ClientError: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.5-flash\nPlease retry in 25.03605318s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '25s'}]}}.
+[2026-07-10 21:12:39,502] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent "HTTP/1.1 429 Too Many Requests"
+[2026-07-10 21:12:39,502] 64 google_genai._api_client INFO - Retrying google.genai._api_client.BaseApiClient._request_once in 8.86 seconds as it raised ClientError: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.5-flash\nPlease retry in 20.482216322s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '20s'}]}}.
+[2026-07-10 21:12:48,577] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent "HTTP/1.1 429 Too Many Requests"
+[2026-07-10 21:12:48,581] 64 google_genai._api_client INFO - Retrying google.genai._api_client.BaseApiClient._request_once in 16.4 seconds as it raised ClientError: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.5-flash\nPlease retry in 11.409233602s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '11s'}]}}.
+[2026-07-10 21:13:05,149] 1025 httpx INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent "HTTP/1.1 429 Too Many Requests"
+[2026-07-10 21:13:05,149] 104 root ERROR - Test ID:TC_010 failed: Error occured in script: C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\runner\test_runner.py at line number: 53 with error message: Error occured in script: C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\llm\chains.py at line number: 23 with error message: Error calling model 'gemini-3.5-flash' (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.5-flash\nPlease retry in 54.826827102s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '54s'}]}}
+Traceback (most recent call last):
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 3302, in _generate
+    response: GenerateContentResponse = self.client.models.generate_content(
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\google\genai\models.py", line 6526, in generate_content
+    response = self._generate_content(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\google\genai\models.py", line 4954, in _generate_content
+    response = self._api_client.request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\google\genai\_api_client.py", line 1618, in request
+    response = self._request(http_request, http_options, stream=False)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\google\genai\_api_client.py", line 1409, in _request
+    return retry(self._request_once, http_request, stream)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\tenacity\__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\tenacity\__init__.py", line 371, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\tenacity\__init__.py", line 413, in exc_check
+    raise retry_exc.reraise()
+          ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\tenacity\__init__.py", line 184, in reraise
+    raise self.last_attempt.result()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\tenacity\__init__.py", line 473, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\google\genai\_api_client.py", line 1388, in _request_once
+    errors.APIError.raise_for_response(response)
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\google\genai\errors.py", line 155, in raise_for_response
+    cls.raise_error(response.status_code, response_json, response)
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\google\genai\errors.py", line 184, in raise_error
+    raise ClientError(status_code, response_json, response)
+google.genai.errors.ClientError: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.5-flash\nPlease retry in 54.826827102s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '54s'}]}}
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\llm\chains.py", line 23, in invoke_with_metrics
+    response = gemini_model.invoke(prompt_value)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 2754, in invoke
+    return super().invoke(input, config, stop=stop, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 476, in invoke
+    self.generate_prompt(
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1849, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1656, in generate
+    self._generate_with_cache(
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1994, in _generate_with_cache
+    result = self._generate(
+             ^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 3306, in _generate
+    _handle_client_error(e, request)
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_google_genai\chat_models.py", line 177, in _handle_client_error
+    raise ChatGoogleGenerativeAIError(msg) from e
+langchain_google_genai.chat_models.ChatGoogleGenerativeAIError: Error calling model 'gemini-3.5-flash' (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.5-flash\nPlease retry in 54.826827102s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '54s'}]}}
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\runner\test_runner.py", line 53, in run_query
+    return agent_chain.invoke({"question": question})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\base.py", line 3444, in invoke
+    input_ = context.run(step.invoke, input_, config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\passthrough.py", line 511, in invoke
+    return self._call_with_config(self._invoke, input, config, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\base.py", line 2289, in _call_with_config
+    context.run(
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\config.py", line 526, in call_func_with_variable_args
+    return func(input, **kwargs)  # type: ignore[call-arg]
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\passthrough.py", line 497, in _invoke
+    **self.mapper.invoke(
+      ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\base.py", line 4174, in invoke
+    output = {
+             ^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\base.py", line 4175, in <dictcomp>
+    key: future.result()
+         ^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\_base.py", line 456, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\base.py", line 4158, in _invoke_step
+    return context.run(
+           ^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\base.py", line 3444, in invoke
+    input_ = context.run(step.invoke, input_, config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\base.py", line 5313, in invoke
+    return self._call_with_config(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\base.py", line 2289, in _call_with_config
+    context.run(
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\config.py", line 526, in call_func_with_variable_args
+    return func(input, **kwargs)  # type: ignore[call-arg]
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\base.py", line 5170, in _invoke
+    output = call_func_with_variable_args(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\venv\Lib\site-packages\langchain_core\runnables\config.py", line 526, in call_func_with_variable_args
+    return func(input, **kwargs)  # type: ignore[call-arg]
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\llm\chains.py", line 35, in invoke_with_metrics
+    raise MRDException(e,sys) from e
+src.utils.exception.MRDException: Error occured in script: C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\llm\chains.py at line number: 23 with error message: Error calling model 'gemini-3.5-flash' (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.5-flash\nPlease retry in 54.826827102s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '54s'}]}}
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\runner\test_runner.py", line 93, in <module>
+    answer = run_query(user_query)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\runner\test_runner.py", line 55, in run_query
+    raise MRDException(e,sys) from e
+src.utils.exception.MRDException: Error occured in script: C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\runner\test_runner.py at line number: 53 with error message: Error occured in script: C:\Users\bhara\OneDrive\Desktop\ModelRegressionDetectionSystem\src\llm\chains.py at line number: 23 with error message: Error calling model 'gemini-3.5-flash' (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.5-flash\nPlease retry in 54.826827102s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '54s'}]}}
+[2026-07-10 21:13:05,162] 110 root INFO - All test executions completed successfully.
