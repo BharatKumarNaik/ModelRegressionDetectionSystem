@@ -6,17 +6,14 @@
     "sql_features": ["SUM", "WHERE"],
     "business_domain": "Sales",
     "question": "What is the total sales amount recorded in customer transactions?",
-    "baseline": {
-      "model": "gemini-2.5-flash",
-      "prompt_version": "v1.0",
-      "sql": "SELECT SUM(TransactionAmount) AS TotalSales FROM Sales.CustomerTransactions;"
-    },
-    "expected": {
+    "sql_script": "SELECT SUM(TransactionAmount) AS TotalSales FROM Sales.CustomerTransactions;",
+    "sql_result": {
       "columns": ["TotalSales"],
       "rows": [[
             "267011.44"
         ]]
     },
+    "final_answer": "The total sales amount recorded in customer transactions is 267011.44.",
     "critical": true
   },
   {
@@ -26,12 +23,8 @@
     "sql_features": ["GROUP BY", "YEAR", "MONTH"],
     "business_domain": "Sales",
     "question": "Show the monthly sales trend across all available years.",
-    "baseline": {
-      "model": "gemini-2.5-flash",
-      "prompt_version": "v1.0",
-      "sql": "SELECT YEAR(TransactionDate) AS SalesYear, MONTH(TransactionDate) AS SalesMonth, SUM(TransactionAmount) AS Revenue FROM Sales.CustomerTransactions GROUP BY YEAR(TransactionDate), MONTH(TransactionDate) ORDER BY SalesYear, SalesMonth;"
-    },
-    "expected": {
+    "sql_script": "SELECT YEAR(TransactionDate) AS SalesYear, MONTH(TransactionDate) AS SalesMonth, SUM(TransactionAmount) AS Revenue FROM Sales.CustomerTransactions GROUP BY YEAR(TransactionDate), MONTH(TransactionDate) ORDER BY SalesYear, SalesMonth;",
+    "sql_result": {
     "columns": [
         "SalesYear",
         "SalesMonth",
@@ -244,7 +237,8 @@
             "181201.92"
         ]
     ]
-},
+    },
+    "final_answer": "The monthly sales trend across all available years is as follows:\n\n**2013**\n*   January: 144396.89\n*   February: -165.03\n*   March: -144231.86\n*   April: 187341.94\n*   May: 15772.34\n*   June: -203114.28\n*   July: 133028.28\n*   August: -50806.31\n*   September: 86319.61\n*   October: -16399.21\n*   November: -105168.95\n*   December: 192275.32\n\n**2014**\n*   January: -4798.75\n*   February: -56793.26\n*   March: -3062.05\n*   April: 10624.98\n*   May: -104385.10\n*   June: 79029.48\n*   July: -24655.38\n*   August: -135208.66\n*   September: 148286.69\n*   October: 163665.95\n*   November: -311952.64\n*   December: 200959.00\n\n**2015**\n*   January: -57226.93\n*   February: 4121.95\n*   March: -2484.35\n*   April: 128264.76\n*   May: -273634.43\n*   June: 150709.30\n*   July: 50229.81\n*   August: -71634.65\n*   September: 141865.24\n*   October: -204337.56\n*   November: 83360.69\n*   December: 81847.40\n\n**2016**\n*   January: -232040.23\n*   February: 297620.81\n*   March: -55432.01\n*   April: -156379.28\n*   May: 181201.92",
     "critical": true
   },
   {
@@ -254,12 +248,8 @@
     "sql_features": ["TOP", "GROUP BY", "ORDER BY"],
     "business_domain": "Customer",
     "question": "Who are the top five customers by total transaction amount?",
-    "baseline": {
-      "model": "gemini-2.5-flash",
-      "prompt_version": "v1.0",
-      "sql": "SELECT TOP 5 c.CustomerName, SUM(ct.TransactionAmount) AS Revenue FROM Sales.CustomerTransactions ct JOIN Sales.Customers c ON ct.CustomerID = c.CustomerID GROUP BY c.CustomerName ORDER BY Revenue DESC;"
-    },
-    "expected": {
+    "sql_script": "SELECT TOP 5 c.CustomerName, SUM(ct.TransactionAmount) AS Revenue FROM Sales.CustomerTransactions ct JOIN Sales.Customers c ON ct.CustomerID = c.CustomerID GROUP BY c.CustomerName ORDER BY Revenue DESC;",
+    "sql_result": {
     "columns": [
         "CustomerName",
         "Revenue"
@@ -287,6 +277,7 @@
         ]
     ]
 },
+    "final_answer": "The top five customers by total transaction amount are:\n*   Wingtip Toys (Head Office): 97053.58\n*   Tailspin Toys (Head Office): 56435.84\n*   Kumar Naicker: 13212.12\n*   Linh Dao: 6728.65\n*   Rodrigo Figueiredo: 5975.40",
     "critical": true
   },
   {
@@ -296,12 +287,8 @@
     "sql_features": ["AVG", "GROUP BY", "JOIN"],
     "business_domain": "Sales",
     "question": "Compare the average transaction amount across customer categories.",
-    "baseline": {
-      "model": "gemini-2.5-flash",
-      "prompt_version": "v1.0",
-      "sql": "SELECT cc.CustomerCategoryName, AVG(ct.TransactionAmount) AS AverageTransaction FROM Sales.CustomerTransactions ct JOIN Sales.Customers c ON ct.CustomerID = c.CustomerID JOIN Sales.CustomerCategories cc ON c.CustomerCategoryID = cc.CustomerCategoryID GROUP BY cc.CustomerCategoryName;"
-    },
-    "expected": {
+    "sql_script": "SELECT cc.CustomerCategoryName, AVG(ct.TransactionAmount) AS AverageTransaction FROM Sales.CustomerTransactions ct JOIN Sales.Customers c ON ct.CustomerID = c.CustomerID JOIN Sales.CustomerCategories cc ON c.CustomerCategoryID = cc.CustomerCategoryID GROUP BY cc.CustomerCategoryName;",
+    "sql_result": {
     "columns": [
         "CustomerCategoryName",
         "AverageTransaction"
@@ -329,6 +316,7 @@
         ]
     ]
 },
+    "final_answer": "Here is the comparison of average transaction amounts across customer categories:\n\n*   **Supermarket**: 2.103272\n*   **Novelty Shop**: 3.082574\n*   **Gift Store**: 2.041149\n*   **Corporate**: 3.273610\n*   **Computer Store**: 1.650704",
     "critical": true
   },
   {
@@ -338,12 +326,8 @@
     "sql_features": ["WHERE"],
     "business_domain": "Warehouse",
     "question": "Which stock items are currently below their reorder level?",
-    "baseline": {
-      "model": "gemini-2.5-flash",
-      "prompt_version": "v1.0",
-      "sql": "SELECT si.StockItemName, sh.QuantityOnHand, sh.ReorderLevel FROM Warehouse.StockItemHoldings sh JOIN Warehouse.StockItems si ON sh.StockItemID = si.StockItemID WHERE sh.QuantityOnHand < sh.ReorderLevel;"
-    },
-    "expected": {
+    "sql_script": "SELECT si.StockItemName, sh.QuantityOnHand, sh.ReorderLevel FROM Warehouse.StockItemHoldings sh JOIN Warehouse.StockItems si ON sh.StockItemID = si.StockItemID WHERE sh.QuantityOnHand < sh.ReorderLevel;",
+    "sql_result": {
     "columns": [
         "StockItemName",
         "QuantityOnHand",
@@ -361,7 +345,8 @@
             50
         ]
     ]
-},
+},  
+    "final_answer":"There are currently 2 stock items below their reorder level. The \"The Gu\" red shirt XML tag t-shirt (White) 5XL has 3 units in stock against a reorder level of 5. The Shipping carton (Brown) 305x305x305mm has 38 units in stock against a reorder level of 50. These items should be considered for replenishment to avoid stock shortages.",
     "critical": true
   },
   {
@@ -371,12 +356,8 @@
     "sql_features": ["GROUP BY", "JOIN", "SUM"],
     "business_domain": "Purchasing",
     "question": "Which supplier has the highest procurement spending?",
-    "baseline": {
-      "model": "gemini-2.5-flash",
-      "prompt_version": "v1.0",
-      "sql": "SELECT s.SupplierName, SUM(st.TransactionAmount) AS TotalSpend FROM Purchasing.SupplierTransactions st JOIN Purchasing.Suppliers s ON st.SupplierID = s.SupplierID GROUP BY s.SupplierName ORDER BY TotalSpend DESC;"
-    },
-    "expected": {
+    "sql_script": "SELECT s.SupplierName, SUM(st.TransactionAmount) AS TotalSpend FROM Purchasing.SupplierTransactions st JOIN Purchasing.Suppliers s ON st.SupplierID = s.SupplierID GROUP BY s.SupplierName ORDER BY TotalSpend DESC;",
+    "sql_result": {
     "columns": [
         "SupplierName",
         "TotalSpend"
@@ -412,6 +393,7 @@
         ]
     ]
 },
+    "final_answer":"Fabrikam, Inc. has the highest procurement spending, with a total spend of 1,871,894.10. Litware, Inc. is the second-highest supplier with a total spend of 849,784.11, while all other suppliers currently have no recorded procurement spending.",
     "critical": true
   },
   {
@@ -421,12 +403,8 @@
     "sql_features": ["ROW_NUMBER", "PARTITION BY", "JOIN"],
     "business_domain": "Sales",
     "question": "Identify the top three customers by revenue within each buying group.",
-    "baseline": {
-      "model": "gemini-2.5-flash",
-      "prompt_version": "v1.0",
-      "sql": "WITH CustomerRevenue AS (SELECT bg.BuyingGroupName, c.CustomerName, SUM(ct.TransactionAmount) AS Revenue FROM Sales.CustomerTransactions ct JOIN Sales.Customers c ON ct.CustomerID = c.CustomerID JOIN Sales.BuyingGroups bg ON c.BuyingGroupID = bg.BuyingGroupID GROUP BY bg.BuyingGroupName, c.CustomerName) SELECT BuyingGroupName, CustomerName, Revenue FROM (SELECT *, ROW_NUMBER() OVER(PARTITION BY BuyingGroupName ORDER BY Revenue DESC) AS rn FROM CustomerRevenue) t WHERE rn <= 3;"
-    },
-    "expected": {
+    "sql_script": "WITH CustomerRevenue AS (SELECT bg.BuyingGroupName, c.CustomerName, SUM(ct.TransactionAmount) AS Revenue FROM Sales.CustomerTransactions ct JOIN Sales.Customers c ON ct.CustomerID = c.CustomerID JOIN Sales.BuyingGroups bg ON c.BuyingGroupID = bg.BuyingGroupID GROUP BY bg.BuyingGroupName, c.CustomerName) SELECT BuyingGroupName, CustomerName, Revenue FROM (SELECT *, ROW_NUMBER() OVER(PARTITION BY BuyingGroupName ORDER BY Revenue DESC) AS rn FROM CustomerRevenue) t WHERE rn <= 3;",
+    "sql_result": {
     "columns": [
         "BuyingGroupName",
         "CustomerName",
@@ -445,6 +423,7 @@
         ]
     ]
 },
+"final_answer":"Tailspin Toys (Head Office) is the highest-revenue customer in the Tailspin Toys buying group, generating revenue of 56,435.84. Wingtip Toys (Head Office) is the highest-revenue customer in the Wingtip Toys buying group, generating revenue of 97,053.58.",
     "critical": true
   }
 ]
