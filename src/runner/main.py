@@ -7,6 +7,8 @@ from src.llm.chains import build_agent_chain
 from src.utils.logger import logging
 from src.llm.IndexManager import get_vectordb_retriever
 from src.utils.exception import MRDException
+from src.evaluation.evaluation import Runner
+from src.runner.test_runner import testing_test_runner
 import sys
 
 def run_query(question: str) -> str:
@@ -24,5 +26,9 @@ if __name__ == "__main__":
     answer = run_query(user_query)
     print("\n--- Final Agent Answer ---")
     print(answer['final_answer'])
+    testing_test_runner()
+    print("Test Runner executed successfully")
+    print(Runner.evaluationRunner())
+    print("Evaluation and Regression runner executed successfully")
 
     

@@ -56,7 +56,7 @@ def run_query(question: str) -> str:
     except Exception as e:
         raise MRDException(e,sys) from e
 
-if __name__ == "__main__":
+def testing_test_runner():
     test_cases = JsonUtils.read_json(GOLDEN_DATASET_PATH)
     test_execution_results = []
     for test in test_cases:
@@ -81,30 +81,5 @@ if __name__ == "__main__":
     JsonUtils.write_json(os.path.join(TEST_ARTIFACTS_DIR,test_artifact_filename),test_execution_results)
     logging.info("All test executions completed successfully.")
 
-
-
-def testing_test_runner():
-    test_cases = JsonUtils.read_json(GOLDEN_DATASET_PATH)
-    test_execution_results = {}
-    for test in test_cases:
-        try:
-            logging.info(f"Executing Test ID:{test['id']}")
-            user_query = test['question']
-            answer = run_query(user_query)
-            print("\n--- Final Agent Answer ---")
-            print(answer['final_answer'])
-            evaluation_input = {k: answer[k] for k in ['question', 'sql_script', 'sql_result','sql_llm','summary_llm' ,'final_answer']}
-            evaluation_input["sql_llm"].pop("answer", None)
-            evaluation_input["summary_llm"].pop("answer", None)
-            test_execution_results[test['id']]= evaluation_input
-            logging.info(f"Test ID:{test['id']} execution completed")
-        except Exception as e:
-            logging.exception(f"Test ID:{test['id']} failed: {e}")
-            continue
-        time.sleep(20)
-        
-    test_artifact_filename = f"{datetime.now().strftime('%m_%d_%Y_%H_%M_%S')}.json"
-    JsonUtils.write_json(os.path.join(TEST_ARTIFACTS_DIR,test_artifact_filename),test_execution_results)
-    logging.info("All test executions completed successfully.")
 # Server=localhost;Database=master;Trusted_Connection=True;
 # sqlcmd -S localhost -C

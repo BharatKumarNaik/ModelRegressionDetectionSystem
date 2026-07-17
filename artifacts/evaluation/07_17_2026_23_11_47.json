@@ -1,0 +1,65 @@
+[
+    {
+        "id": "TC_001",
+        "sql_match": 1.0,
+        "sql_result": 0.8,
+        "answer_similarity": 1.0,
+        "latency_pass": true,
+        "token_pass": true,
+        "passed": false
+    },
+    {
+        "id": "TC_003",
+        "sql_match": 0.97,
+        "sql_result": 0.8,
+        "answer_similarity": 1.0,
+        "latency_pass": false,
+        "token_pass": true,
+        "passed": false
+    },
+    {
+        "id": "TC_004",
+        "sql_match": 0.97,
+        "sql_result": 0.8,
+        "answer_similarity": 1.0,
+        "latency_pass": true,
+        "token_pass": true,
+        "passed": false
+    },
+    {
+        "id": "TC_007",
+        "sql_match": 0.89,
+        "sql_result": 0.8,
+        "answer_similarity": 1.0,
+        "latency_pass": true,
+        "token_pass": true,
+        "passed": false
+    },
+    {
+        "id": "TC_008",
+        "sql_match": 0.99,
+        "sql_result": 0.2,
+        "answer_similarity": 1.0,
+        "latency_pass": true,
+        "token_pass": true,
+        "passed": false
+    },
+    {
+        "id": "TC_009",
+        "sql_match": 0.98,
+        "sql_result": 0.0,
+        "answer_similarity": 1.0,
+        "latency_pass": true,
+        "token_pass": true,
+        "passed": false
+    },
+    {
+        "id": "TC_010",
+        "sql_match": 0.81,
+        "sql_result": 0.0,
+        "answer_similarity": 1.0,
+        "latency_pass": false,
+        "token_pass": true,
+        "passed": false
+    }
+]

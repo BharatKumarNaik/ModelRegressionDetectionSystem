@@ -18,4 +18,5 @@ langchain_google_genai
 faiss-cpu
 # faiss-gpu
 thefuzz
+deepeval
 # -e .
