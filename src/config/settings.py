@@ -48,3 +48,4 @@ SCHEMA_HASH_PATH = os.getenv("SCHEMA_HASH_PATH", "artifacts/vector_store/schema_
 TEST_ARTIFACTS_DIR = "artifacts/test_dir"
 GOLDEN_DATASET_PATH = "datasets/golden_dataset.json"
 EVALUATION_RESULT_DIR = "artifacts/evaluation"
+REPORT_DIR = "reports"

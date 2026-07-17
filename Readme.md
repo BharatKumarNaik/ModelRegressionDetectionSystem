@@ -87,8 +87,8 @@ This provides a CI/CD-style testing workflow specifically designed for LLM-power
 | Database               | SQL Server                          |
 | Database Connectivity  | pyodbc                              |
 | Data Processing        | Pandas                              |
-| Evaluation             | Custom Evaluation Engine (Upcoming) |
-| CI/CD                  | GitHub Actions (Planned)            |
+| Evaluation             | Custom Evaluation Engine            |
+| CI/CD                  | GitHub Actions                      |
 
 ---
 
@@ -132,6 +132,11 @@ Formatted Response
             ▼
 Evaluation Pipeline
 ```
+---
+
+# Regression Report:
+![alt text](reports/Readme.png)
+
 
 ---
 

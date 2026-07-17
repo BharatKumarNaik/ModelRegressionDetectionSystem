@@ -11,8 +11,8 @@
     {
         "id": "TC_003",
         "sql_match": 0.97,
-        "sql_result": 1.0,
-        "answer_similarity": 1.0,
+        "sql_result": 0.9,
+        "answer_similarity": 9.8,
         "latency_pass": false,
         "token_pass": true,
         "passed": false

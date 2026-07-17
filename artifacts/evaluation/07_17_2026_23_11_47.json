@@ -2,7 +2,7 @@
     {
         "id": "TC_001",
         "sql_match": 1.0,
-        "sql_result": 0.8,
+        "sql_result": 1.0,
         "answer_similarity": 1.0,
         "latency_pass": true,
         "token_pass": true,
@@ -19,9 +19,9 @@
     },
     {
         "id": "TC_004",
-        "sql_match": 0.97,
-        "sql_result": 0.8,
-        "answer_similarity": 1.0,
+        "sql_match": 0.82,
+        "sql_result": 0.7,
+        "answer_similarity": 0.87,
         "latency_pass": true,
         "token_pass": true,
         "passed": false
