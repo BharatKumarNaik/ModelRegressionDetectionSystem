@@ -1,0 +1,35 @@
+name: LLM Regression Pipeline
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+
+    jobs:
+      regression:
+          runs-on: ubuntu-latest
+          steps:
+            -name: Checkout Repository
+              uses: actions/checkout@v4
+            
+            -name: Setup Python
+              uses: actions/setup-python@v5
+              with: 
+                python-version:"3.11"
+            
+            -name: Install Dependencies
+              run: |
+                python -m pip install --upgrade pip
+                pip install -e .
+
+            -name: Run Regression Pipeline
+              run: |
+                python src/runner/main.py
+            
+            -name: Upload HTML Report
+              uses: actions/upload-artifact@v4
+              with:
+                name: regression-report
+                path: reports/
