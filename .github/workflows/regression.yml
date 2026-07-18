@@ -11,7 +11,7 @@ on:
 jobs:
   regression:
 
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
 
@@ -29,6 +29,8 @@ jobs:
           pip install -e .
 
       - name: Run Regression Pipeline
+        env:
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
         run: |
           python src/runner/main.py
 
