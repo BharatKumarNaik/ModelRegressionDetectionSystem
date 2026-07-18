@@ -23,12 +23,12 @@ def run_query(question: str) -> str:
         raise MRDException(e,sys) from e
 
 if __name__ == "__main__":
-    # user_query = input("Enter your query:")
-    # answer = run_query(user_query)
-    # print("\n--- Final Agent Answer ---")
-    # print(answer['final_answer'])
-    # testing_test_runner()
-    # print("Test Runner executed successfully")
+    user_query = input("Enter your query:")
+    answer = run_query(user_query)
+    print("\n--- Final Agent Answer ---")
+    print(answer['final_answer'])
+    testing_test_runner()
+    print("Test Runner executed successfully")
     regReport= Runner.evaluationRunner()
     print("Evaluation and Regression runner executed successfully")
     RG = ReportGenerator(regReport)

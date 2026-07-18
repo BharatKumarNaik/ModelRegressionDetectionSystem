@@ -286,26 +286,26 @@ class Regressor:
 
 class Runner:
     def evaluationRunner():
-        # eval_files = Path(EVALUATION_RESULT_DIR).glob("*.json")
-        # prev_evalFile = max(eval_files, key=lambda f: f.stat().st_mtime)
+        eval_files = Path(EVALUATION_RESULT_DIR).glob("*.json")
+        prev_evalFile = max(eval_files, key=lambda f: f.stat().st_mtime)
 
-        # golden_dataset = JsonUtils.read_json(GOLDEN_DATASET_PATH)
-        # files = Path(TEST_ARTIFACTS_DIR).glob("*.json")
-        # latest = max(files, key=lambda f: f.stat().st_mtime)
-        # latest_test_artifact = JsonUtils.read_json(latest)
-        # Eval = Evaluator()
-        # evaluation_dict = Eval.evaluate_run(golden_dataset,latest_test_artifact)
-        # print(evaluation_dict)
-        # eval_artifact_filename = f"{datetime.now().strftime('%m_%d_%Y_%H_%M_%S')}.json"
-        # JsonUtils.write_json(os.path.join(EVALUATION_RESULT_DIR,eval_artifact_filename),evaluation_dict)
-        # logging.info("All evaluation completed successfully.")
+        golden_dataset = JsonUtils.read_json(GOLDEN_DATASET_PATH)
+        files = Path(TEST_ARTIFACTS_DIR).glob("*.json")
+        latest = max(files, key=lambda f: f.stat().st_mtime)
+        latest_test_artifact = JsonUtils.read_json(latest)
+        Eval = Evaluator()
+        evaluation_dict = Eval.evaluate_run(golden_dataset,latest_test_artifact)
+        print(evaluation_dict)
+        eval_artifact_filename = f"{datetime.now().strftime('%m_%d_%Y_%H_%M_%S')}.json"
+        JsonUtils.write_json(os.path.join(EVALUATION_RESULT_DIR,eval_artifact_filename),evaluation_dict)
+        logging.info("All evaluation completed successfully.")
 
-        # logging.info("Initiating Regression")
-        # eval_files = Path(EVALUATION_RESULT_DIR).glob("*.json")
-        # latest_evalFile = max(files, key=lambda f: f.stat().st_mtime)
+        logging.info("Initiating Regression")
+        eval_files = Path(EVALUATION_RESULT_DIR).glob("*.json")
+        latest_evalFile = max(files, key=lambda f: f.stat().st_mtime)
 
-        prev_evalFile=r'artifacts\evaluation\07_16_2026_23_11_47.json'
-        latest_evalFile=r'artifacts\evaluation\07_17_2026_23_11_47.json'
+        # prev_evalFile=r'artifacts\evaluation\07_16_2026_23_11_47.json'
+        # latest_evalFile=r'artifacts\evaluation\07_17_2026_23_11_47.json'
         prev_eval_artifact = JsonUtils.read_json(prev_evalFile)
         latest_eval_artifact = JsonUtils.read_json(latest_evalFile)
         RegGen = Regressor(prev_eval_artifact,latest_eval_artifact)
